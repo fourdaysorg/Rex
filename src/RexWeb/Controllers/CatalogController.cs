@@ -12,9 +12,10 @@ namespace RexWeb.Controllers
         {
             get
             {
-                return Enumerable.Range(0, 250)
-                    .Select(ign => new CampaignModel() 
+                return Enumerable.Range(1, 250)
+                    .Select(i => new CampaignModel() 
                     {
+                        Id = i,
                         Name = "Huracán Katrina",
                         Description = "El huracán Katrina fue uno de los más destructivos y el que causó más víctimas mortales de la temporada de huracanes en el Atlántico de 2005."
                     });

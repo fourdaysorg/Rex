@@ -2,7 +2,6 @@
 
 @{
     ViewData["Title"] = "Campaigns";
-    ViewData["Section"] = "Campaigns";
 }
 
 <main class="col-md-9 ml-sm-auto col-lg-10 px-4" role="main">
@@ -29,11 +28,11 @@
                     <td>@item.Campaign.Description</td>
                     <td>
                         <div class="btn-group float-right">
-                            <button aria-expanded="false" aria-haspopup="true" class="btn btn-sm btn-outline-secondary dropdown-toggle" data-toggle="dropdown" id="actions_button_fdb06901-8c5b-4916-afb0-c8fb995619fe" type="button">Acciones</button>
+                            <button aria-expanded="false" aria-haspopup="true" class="btn btn-sm btn-outline-secondary dropdown-toggle" data-toggle="dropdown" id="actions_button_fdb06901-8c5b-4916-afb0-c8fb995619fe" type="button">Actions</button>
                             <div aria-labelledby="actions_button_fdb06901-8c5b-4916-afb0-c8fb995619fe" class="dropdown-menu">
-                                <a class="dropdown-item" href="/order/fdb06901-8c5b-4916-afb0-c8fb995619fe">
+                                <a class="dropdown-item" href=@("/Catalog/Details/" + @item.Campaign.Id)>
                                     <i class="far fa-eye mr-2"></i>
-                                    Ver detalles
+                                    Details
                                 </a>
                                 <div class="dropdown-divider"></div>
                                 <a class="dropdown-item" href="/edit-order/fdb06901-8c5b-4916-afb0-c8fb995619fe">

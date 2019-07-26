@@ -14,24 +14,5 @@
 	});
 
 	//Datatables
-	$('table').DataTable({
-		language: {
-			processing: "Cargando...",
-			lengthMenu: "Mostrar _MENU_ elementos",
-			info: "Mostrando _START_ a _END_ de _TOTAL_ elementos",
-			infoEmpty: "Mostrando 0 elementos",
-			infoFiltered: "(filtrados de _MAX_ elementos totales)",
-			infoPostFix: "",
-			loadingRecords: "Cargando...",
-			zeroRecords: "No hay registros que mostrar",
-			emptyTable: "No hay registros disponibles",
-			search: "Buscar:",
-			paginate: {
-				first: "Primero",
-				previous: "Anterior",
-				next: "Siguiente",
-				last: "Último"
-			}
-		}
-	});
+	$('table').DataTable();
 })();
