@@ -10,7 +10,7 @@ var OPACITY = {
     LINK_FADED: 0.1,
     LINK_HIGHLIGHT: 0.9
   },
-  TYPES = ["Asset", "Expense", "Revenue", "Equity", "Liability"],
+  TYPES = ["Donor", "Expense", "Intermediate", "People", "Liability"],
   TYPE_COLORS = ["#1b9e77", "#d95f02", "#7570b3", "#e7298a", "#66a61e", "#e6ab02", "#a6761d"],
   TYPE_HIGHLIGHT_COLORS = ["#66c2a5", "#fc8d62", "#8da0cb", "#e78ac3", "#a6d854", "#ffd92f", "#e5c494"],
   LINK_COLOR = "#b3b3b3",
@@ -500,17 +500,17 @@ function update () {
 }
 
 var exampleNodes = [
-  {"type":"Asset","id":"a","parent":null,"name":"Assets"},
-  {"type":"Asset","id":1,"parent":"a","number":"101","name":"Cash"},
-  {"type":"Asset","id":2,"parent":"a","number":"120","name":"Accounts Receivable"},
-  {"type":"Asset","id":3,"parent":"a","number":"140","name":"Merchandise Inventory"},
-  {"type":"Asset","id":4,"parent":"a","number":"150","name":"Supplies"},
-  {"type":"Asset","id":5,"parent":"a","number":"160","name":"Prepaid Insurance"},
-  {"type":"Asset","id":6,"parent":"a","number":"170","name":"Land"},
-  {"type":"Asset","id":7,"parent":"a","number":"175","name":"Buildings"},
-  {"type":"Asset","id":8,"parent":"a","number":"178","name":"Acc. Depreciation Buildings"},
-  {"type":"Asset","id":9,"parent":"a","number":"180","name":"Equipment"},
-  {"type":"Asset","id":10,"parent":"a","number":"188","name":"Acc. Depreciation Equipment"},
+  {"type":"Donor","id":"a","parent":null,"name":"Assets"},
+  {"type":"Donor","id":1,"parent":"a","number":"101","name":"Cash"},
+  {"type":"Donor","id":2,"parent":"a","number":"120","name":"Accounts Receivable"},
+  {"type":"Donor","id":3,"parent":"a","number":"140","name":"Merchandise Inventory"},
+  {"type":"Donor","id":4,"parent":"a","number":"150","name":"Supplies"},
+  {"type":"Donor","id":5,"parent":"a","number":"160","name":"Prepaid Insurance"},
+  {"type":"Donor","id":6,"parent":"a","number":"170","name":"Land"},
+  {"type":"Donor","id":7,"parent":"a","number":"175","name":"Buildings"},
+  {"type":"Donor","id":8,"parent":"a","number":"178","name":"Acc. Depreciation Buildings"},
+  {"type":"Donor","id":9,"parent":"a","number":"180","name":"Equipment"},
+  {"type":"Donor","id":10,"parent":"a","number":"188","name":"Acc. Depreciation Equipment"},
   {"type":"Liability","id":"l","parent":null,"number":"l","name":"Liabilities"},
   {"type":"Liability","id":11,"parent":"l","number":"210","name":"Notes Payable"},
   {"type":"Liability","id":12,"parent":"l","number":"215","name":"Accounts Payable"},
@@ -518,14 +518,14 @@ var exampleNodes = [
   {"type":"Liability","id":14,"parent":"l","number":"230","name":"Interest Payable"},
   {"type":"Liability","id":15,"parent":"l","number":"240","name":"Unearned Revenues"},
   {"type":"Liability","id":16,"parent":"l","number":"250","name":"Mortage Loan Payable"},
-  {"type":"Equity","id":"eq","parent":null,"number":"eq","name":"Equity"},
-  {"type":"Revenue","id":"r","parent":null,"number":"r","name":"Revenues"},
-  {"type":"Revenue","id":"or","parent":"r","number":"","name":"Operating Revenue"},
-  {"type":"Revenue","id":17,"parent":"or","number":"310","name":"Service Revenues"},
-  {"type":"Revenue","id":"nor","parent":"r","number":"","name":"Non-Operating Revenue"},
-  {"type":"Revenue","id":18,"parent":"nor","number":"810","name":"Interest Revenues"},
-  {"type":"Revenue","id":19,"parent":"nor","number":"910","name":"Asset Sale Gain"},
-  {"type":"Revenue","id":20,"parent":"nor","number":"960","name":"Asset Sale Loss"},
+  {"type":"People","id":"eq","parent":null,"number":"eq","name":"People"},
+  {"type":"Intermediate","id":"r","parent":null,"number":"r","name":"Revenues"},
+  {"type":"Intermediate","id":"or","parent":"r","number":"","name":"Operating Intermediate"},
+  {"type":"Intermediate","id":17,"parent":"or","number":"310","name":"Service Revenues"},
+  {"type":"Intermediate","id":"nor","parent":"r","number":"","name":"Non-Operating Intermediate"},
+  {"type":"Intermediate","id":18,"parent":"nor","number":"810","name":"Interest Revenues"},
+  {"type":"Intermediate","id":19,"parent":"nor","number":"910","name":"Donor Sale Gain"},
+  {"type":"Intermediate","id":20,"parent":"nor","number":"960","name":"Donor Sale Loss"},
   {"type":"Expense","id":"ex","parent":null,"number":"ex","name":"Expenses"},
   {"type":"Expense","id":21,"parent":"ex","number":"500","name":"Salaries Expense"},
   {"type":"Expense","id":22,"parent":"ex","number":"510","name":"Wages Expense"},
@@ -592,16 +592,16 @@ var exampleLinks = [
   {"source":Math.ceil(Math.random() * 28), "target":Math.ceil(Math.random() * 28), "value":Math.floor(Math.random() * 100)}
 ]
 exampleNodes = [
-    { "type": "Asset", "id": "d1", "parent": null, "name": "Donante 1" },
-    { "type": "Asset", "id": "d2", "parent": null, "name": "Donante 2" },
-    { "type": "Asset", "id": "d3", "parent": null, "name": "Donante 3" },
-    { "type": "Asset", "id": "d4", "parent": null, "name": "Donante 4" },
-    { "type": "Asset", "id": "d5", "parent": null, "name": "Donante 5" },
+    { "type": "Donor", "id": "d1", "parent": null, "name": "Donante 1" },
+    { "type": "Donor", "id": "d2", "parent": null, "name": "Donante 2" },
+    { "type": "Donor", "id": "d3", "parent": null, "name": "Donante 3" },
+    { "type": "Donor", "id": "d4", "parent": null, "name": "Donante 4" },
+    { "type": "Donor", "id": "d5", "parent": null, "name": "Donante 5" },
     { "type": "Liability", "id": "1", "parent": null,  "name": "Intermediario #1" },
-    { "type": "Equity", "id": "2", "parent": null, "name": "Intermediario #2" },
-    { "type": "Revenue", "id": "3", "parent": null, "name": "Intermediario #3" },
+    { "type": "People", "id": "2", "parent": null, "name": "Intermediario #2" },
+    { "type": "Intermediate", "id": "3", "parent": null, "name": "Intermediario #3" },
     { "type": "Expense", "id": "4", "parent": null, "name": "Intermediario #4" },
-    { "type": "Equity", "id": "5", "parent": null, "name": "Intermediario #5" },
+    { "type": "People", "id": "5", "parent": null, "name": "Intermediario #5" },
 
 ]
 
@@ -619,13 +619,16 @@ exampleLinks = [
     { "source": "2", "target": "4", "value": Math.floor(Math.random() * 100) },
 ]
 
+
+let currentData = null;
+
 function createData(ndonors, nlayers, min_height, max_height) {
     let id = 0;
     let layers = [];
 
     layers.push([]); // Donors
     for (let i = 0; i < ndonors; i++) {
-        layers[0].push({ "type": "Asset", "id": ++id, "parent": null, "name": "Donante #" + i });
+        layers[0].push({ "type": "Donor", "id": ++id, "parent": null, "name": "Donante #" + i });
     }
 
     // Intermediarios
@@ -633,23 +636,25 @@ function createData(ndonors, nlayers, min_height, max_height) {
         let layer = [];
         let h = Math.floor(Math.random() * (max_height - min_height) + min_height);
         for (let j = 0; j < h; j++) {
-            layer.push({ "type": "Revenue", "id": ++id, "parent": null, "name": "Intermediario #" + i});
+            layer.push({ "type": "Intermediate", "id": ++id, "parent": null, "name": "Intermediario #" + i});
         }
         layers.push(layer);
     }
 
     // Gente
-    layers.push([{ "type": "Equity", "id": ++id, "parent": null, "name": "People" }]);
+    layers.push([{ "type": "People", "id": ++id, "parent": null, "name": "People" }]);
 
     exampleLinks = [];
-    for (let i = 0; i < layers.length - 1; i++) {
+    for (let i = layers.length - 1; i > 0; i--) {
         let first = layers[i];
-        let second = layers[i + 1];
-        first.forEach(function (s) {
+        let second = layers[i - 1];
+        first.forEach(function (t) {
             let links = [];
-            while (links.length == 0) {
-                second.forEach(function (t) {
-                    links.push({ "source": s.id, "target": t.id, "value": 10 });
+            while (links.length === 0) {
+                second.forEach(function (s) {
+                    if (Math.random() < 0.5) {
+                        links.push({ "source": s.id, "target": t.id, "value": Math.random() * 1000 });
+                    }
                 });
             }
 
@@ -666,6 +671,11 @@ function createData(ndonors, nlayers, min_height, max_height) {
         });
     });
 
+    currentData = JSON.stringify({
+        nodes: exampleNodes,
+        links: exampleLinks
+    });
+
 
     biHiSankey
         .nodes(exampleNodes)
@@ -680,4 +690,4 @@ function createData(ndonors, nlayers, min_height, max_height) {
     update();
 }
 
-createData(10, 4, 1, 5);
+createData(7, 2, 1, 5);
