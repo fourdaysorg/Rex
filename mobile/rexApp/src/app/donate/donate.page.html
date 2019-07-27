@@ -17,7 +17,9 @@
     <ion-item *ngFor="let item of donations">
         <ion-icon slot="start" [name]="item.icon"></ion-icon>
         <ion-label>{{item.name}}</ion-label>
-        <ion-input type="number" [(ngModel)]="item.count" min="0" max="99"></ion-input>
+        <ion-input type="number" [(ngModel)]="item.count" min="0" max="99" style="width:15vh"></ion-input>
+        <ion-button (click)="increase(item)" ><ion-icon name="add"></ion-icon></ion-button>
+        <ion-button (click)="decrease(item)"><ion-icon name="remove"></ion-icon></ion-button>
       </ion-item>
     </ion-list>
   
