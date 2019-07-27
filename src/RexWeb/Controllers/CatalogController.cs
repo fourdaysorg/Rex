@@ -3,28 +3,18 @@ using System.Text.Encodings.Web;
 using System.Collections.Generic;
 using RexWeb.Models;
 using System.Linq;
+using RexWeb.Business;
 
 namespace RexWeb.Controllers
 {
     public class CatalogController : Controller
     {
-        static IEnumerable<CampaignModel> Campaigns 
-        {
-            get
-            {
-                return Enumerable.Range(1, 250)
-                    .Select(i => new CampaignModel() 
-                    {
-                        Id = i,
-                        Name = "Huracán Katrina",
-                        Description = "El huracán Katrina fue uno de los más destructivos y el que causó más víctimas mortales de la temporada de huracanes en el Atlántico de 2005."
-                    });
-            }
-        }
+        private CampaignRepository repo = new CampaignRepository();
 
         public IActionResult Index()
         {
-            return View(Campaigns);
+            var models = repo.GetAll().Select(CampaignModel.FromEntity);
+            return View(models);
         }
     }
 }
