@@ -7,7 +7,7 @@ var OPACITY = {
     NODE_FADED: 0.1,
     NODE_HIGHLIGHT: 0.8,
     LINK_DEFAULT: 0.6,
-    LINK_FADED: 0.05,
+    LINK_FADED: 0.1,
     LINK_HIGHLIGHT: 0.9
   },
   TYPES = ["Asset", "Expense", "Revenue", "Equity", "Liability"],
@@ -60,7 +60,7 @@ hideTooltip = function () {
 
 showTooltip = function () {
   return tooltip
-    .style("left", d3.event.pageX + "px")
+    .style("left", d3.event.offsetX + "px")
     .style("top", d3.event.pageY + 15 + "px")
     .transition()
       .duration(TRANSITION_DURATION)
@@ -381,9 +381,7 @@ function update () {
         })
         .style("fill-opacity", OPACITY.LINK_DEFAULT);
 
-      tooltip
-        .style("left", g.x + MARGIN.LEFT + "px")
-        .style("top", g.y + g.height + MARGIN.TOP + 15 + "px")
+        showTooltip()
         .transition()
           .duration(TRANSITION_DURATION)
           .style("opacity", 1).select(".value")
