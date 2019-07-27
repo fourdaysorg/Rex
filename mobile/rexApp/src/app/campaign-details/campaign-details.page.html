@@ -1,11 +1,16 @@
 <ion-header>
   <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-icon slot="end" size="large" name="contact"></ion-icon>
+    <ion-back-button slot="start"></ion-back-button>
     <ion-title>CampaignDetails</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-  <ion-card >
+  <ion-card>
     <ion-card-header *ngIf="campaign">
       <ion-card-subtitle>{{campaign.Country}}</ion-card-subtitle>
       <ion-card-title>{{campaign.Name}}</ion-card-title>
