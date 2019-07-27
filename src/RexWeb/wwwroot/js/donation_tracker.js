@@ -690,4 +690,3 @@ function createData(ndonors, nlayers, min_height, max_height) {
     update();
 }
 
-createData(7, 2, 1, 5);
