@@ -9,11 +9,14 @@ import { Campaign } from '../campaign';
 })
 export class DonatePage implements OnInit {
   campaign: Campaign;
-
-  constructor(private route: ActivatedRoute, private router: Router) { 
+  donations: any[]
+  constructor(private route: ActivatedRoute, private router: Router) {
     this.route.queryParams.subscribe(params => {
       if (this.router.getCurrentNavigation().extras.state) {
         this.campaign = this.router.getCurrentNavigation().extras.state.campaign;
+        this.donations = this.campaign.AvailableItems.map((i) => {
+          return { persistent:true, name: i.name+":", icon: i.icon, count: 0 };
+        });
       }
     });
 
