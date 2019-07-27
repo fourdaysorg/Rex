@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Campaign } from '../campaign';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-campaign-details',
@@ -8,11 +9,17 @@ import { Campaign } from '../campaign';
 })
 export class CampaignDetailsPage implements OnInit {
 
-  constructor() { }
+  constructor(private route: ActivatedRoute, private router: Router) {
+    this.route.queryParams.subscribe(params => {
+      if (this.router.getCurrentNavigation().extras.state) {
+        this.campaign = this.router.getCurrentNavigation().extras.state.campaign;
+      }
+    });
+  }
   @Input()
-  campaign:Campaign;
+  campaign: Campaign;
   ngOnInit() {
-    
+
   }
 
 }

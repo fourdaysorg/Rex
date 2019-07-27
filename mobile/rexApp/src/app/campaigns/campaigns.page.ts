@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Campaign } from '../campaign';
 import { NavController } from '@ionic/angular';
+import { NavigationExtras } from '@angular/router';
 
 @Component({
   selector: 'app-campaigns',
@@ -20,6 +21,11 @@ export class CampaignsPage implements OnInit {
 
   }
   navigateTo(campaign: Campaign) {
-    this.navController.navigateForward(["campaign-details"]);
+    let navigationExtras: NavigationExtras = {
+      state: {
+        campaign: campaign
+      }
+    };
+    this.navController.navigateForward(["campaign-details"],navigationExtras);
   }
 }
