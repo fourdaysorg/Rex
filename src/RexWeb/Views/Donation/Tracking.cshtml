@@ -13,25 +13,25 @@
         <form>
             <div class="form-row">
                 <div class="form-group col-md-4">
-                    <label for="inputState">Campaign</label>
-                    <select id="inputState" class="form-control">
+                    <label for="campaignDropdown">Campaign</label>
+                    <select id="campaignDropdown" name="campaignDropdown" class="form-control">
                         <option selected>Choose...</option>
                         <option>Hurricane Katrina</option>
                         <option>Puerto Rico</option>
-                        <option>Inundación en La Plata</option>
+                        <option>Inundación de La Plata</option>
                     </select>
                 </div>
                 <div class="form-group col-md-4">
-                    <label for="inputState">Organization</label>
-                    <select id="inputState" class="form-control">
+                    <label for="organizationDropdown">Organization</label>
+                    <select id="organizationDropdown" class="form-control">
                         <option selected>Choose...</option>
                         <option>UNICEF</option>
                         <option>Red Cross</option>                        
                     </select>
                 </div>
                 <div class="form-group col-md-4">
-                    <label for="inputState">Country</label>
-                    <select id="inputState" class="form-control">
+                    <label for="countryDropdown">Country</label>
+                    <select id="countryDropdown" class="form-control">
                         <option selected>Choose...</option>
                         <option>USA</option>
                         <option>Argentina</option>
@@ -40,9 +40,20 @@
                     </select>
                 </div>
             </div>
-            <div class="form-group">
-                <label for="inputAddress">Search</label>
-                <input type="text" class="form-control" id="inputAddress" placeholder="Search...">
+            <div class="form-row">
+                <div class="form-group col-md-4">
+                    <label for="itemDropdown">Items</label>
+                    <select id="itemDropdown" class="form-control">
+                        <option selected>Choose...</option>
+                        <option>Water</option>
+                        <option>Food</option>
+                    </select>
+                </div>
+
+                <div class="form-group col-md-8">
+                    <label for="inputAddress">Search</label>
+                    <input type="text" class="form-control" id="inputAddress" placeholder="Search...">
+                </div>
             </div>
         </form>
 
@@ -57,6 +68,41 @@
 </main>
 @section Scripts {
 <script type="text/javascript">
-    createData(7, 3, 1, 15);
+    createData(7, 2, 1, 10);
+    let originalData = currentData;
+
+    $("#campaignDropdown").on("change", function () {
+        let selected = this.value;
+        console.log(selected);
+
+        if (selected == "Choose...") {
+            updateChart(JSON.parse(originalData));
+        } else {
+            let nodes = new Set();
+            let links = new Set();
+            let data = JSON.parse(originalData);
+            let node = data.nodes.find(n => n.name == selected);
+            addParents(node, data, nodes, links);
+
+            let newData = {
+                nodes: Array.from(nodes).sort((a, b) => a.id - b.id),
+                links: Array.from(links).sort((a, b) => a.target - b.target)
+            };
+            console.log(newData);
+            updateChart(newData);
+        }
+    });
+
+    function addParents(node, originalData, nodes, links) {
+        if (!node) return;
+        nodes.add(node);
+        originalData.links.filter(l => l.target == node.id)
+            .forEach(l => {
+                links.add(l);
+                addParents(originalData.nodes.find(n => n.id == l.source),
+                    originalData,
+                    nodes, links);
+            });
+    }
 </script>
 }

@@ -10,7 +10,7 @@ var OPACITY = {
     LINK_FADED: 0.1,
     LINK_HIGHLIGHT: 0.9
   },
-  TYPES = ["Donor", "Expense", "Intermediate", "People", "Liability"],
+  TYPES = ["Donor", "Expense", "Intermediate", "Disaster", "Liability"],
   TYPE_COLORS = ["#1b9e77", "#d95f02", "#7570b3", "#e7298a", "#66a61e", "#e6ab02", "#a6761d"],
   TYPE_HIGHLIGHT_COLORS = ["#66c2a5", "#fc8d62", "#8da0cb", "#e78ac3", "#a6d854", "#ffd92f", "#e5c494"],
   LINK_COLOR = "#b3b3b3",
@@ -518,7 +518,7 @@ var exampleNodes = [
   {"type":"Liability","id":14,"parent":"l","number":"230","name":"Interest Payable"},
   {"type":"Liability","id":15,"parent":"l","number":"240","name":"Unearned Revenues"},
   {"type":"Liability","id":16,"parent":"l","number":"250","name":"Mortage Loan Payable"},
-  {"type":"People","id":"eq","parent":null,"number":"eq","name":"People"},
+  {"type":"Disaster","id":"eq","parent":null,"number":"eq","name":"Disaster"},
   {"type":"Intermediate","id":"r","parent":null,"number":"r","name":"Revenues"},
   {"type":"Intermediate","id":"or","parent":"r","number":"","name":"Operating Intermediate"},
   {"type":"Intermediate","id":17,"parent":"or","number":"310","name":"Service Revenues"},
@@ -598,10 +598,10 @@ exampleNodes = [
     { "type": "Donor", "id": "d4", "parent": null, "name": "Donante 4" },
     { "type": "Donor", "id": "d5", "parent": null, "name": "Donante 5" },
     { "type": "Liability", "id": "1", "parent": null,  "name": "Intermediario #1" },
-    { "type": "People", "id": "2", "parent": null, "name": "Intermediario #2" },
+    { "type": "Disaster", "id": "2", "parent": null, "name": "Intermediario #2" },
     { "type": "Intermediate", "id": "3", "parent": null, "name": "Intermediario #3" },
     { "type": "Expense", "id": "4", "parent": null, "name": "Intermediario #4" },
-    { "type": "People", "id": "5", "parent": null, "name": "Intermediario #5" },
+    { "type": "Disaster", "id": "5", "parent": null, "name": "Intermediario #5" },
 
 ]
 
@@ -628,7 +628,7 @@ function createData(ndonors, nlayers, min_height, max_height) {
 
     layers.push([]); // Donors
     for (let i = 0; i < ndonors; i++) {
-        layers[0].push({ "type": "Donor", "id": ++id, "parent": null, "name": "Donante #" + i });
+        layers[0].push({ "type": "Donor", "id": ++id, "parent": null, "name": "Donor #" + i });
     }
 
     // Intermediarios
@@ -636,13 +636,17 @@ function createData(ndonors, nlayers, min_height, max_height) {
         let layer = [];
         let h = Math.floor(Math.random() * (max_height - min_height) + min_height);
         for (let j = 0; j < h; j++) {
-            layer.push({ "type": "Intermediate", "id": ++id, "parent": null, "name": "Intermediario #" + i});
+            layer.push({ "type": "Intermediate", "id": ++id, "parent": null, "name": "NGO #" + i});
         }
         layers.push(layer);
     }
 
-    // Gente
-    layers.push([{ "type": "People", "id": ++id, "parent": null, "name": "People" }]);
+    // Disasters
+    layers.push([
+        { "type": "Disaster", "id": ++id, "parent": null, "name": "Hurricane Katrina" },
+        { "type": "Disaster", "id": ++id, "parent": null, "name": "Puerto Rico" },
+        { "type": "Disaster", "id": ++id, "parent": null, "name": "Inundación de La Plata" }
+    ]);
 
     exampleLinks = [];
     for (let i = layers.length - 1; i > 0; i--) {
@@ -676,10 +680,13 @@ function createData(ndonors, nlayers, min_height, max_height) {
         links: exampleLinks
     });
 
+    updateChart(JSON.parse(currentData));
+}
 
+function updateChart(data) {
     biHiSankey
-        .nodes(exampleNodes)
-        .links(exampleLinks)
+        .nodes(data.nodes)
+        .links(data.links)
         .initializeNodes(function (node) {
             node.state = node.parent ? "contained" : "collapsed";
         })
