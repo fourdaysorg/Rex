@@ -10,7 +10,7 @@ var OPACITY = {
     LINK_FADED: 0.1,
     LINK_HIGHLIGHT: 0.9
   },
-  TYPES = ["Donor", "Expense", "Intermediate", "People", "Liability"],
+  TYPES = ["Donor", "Expense", "Intermediate", "Disaster", "Liability"],
   TYPE_COLORS = ["#1b9e77", "#d95f02", "#7570b3", "#e7298a", "#66a61e", "#e6ab02", "#a6761d"],
   TYPE_HIGHLIGHT_COLORS = ["#66c2a5", "#fc8d62", "#8da0cb", "#e78ac3", "#a6d854", "#ffd92f", "#e5c494"],
   LINK_COLOR = "#b3b3b3",
@@ -499,126 +499,69 @@ function update () {
 
 }
 
-var exampleNodes = [
-  {"type":"Donor","id":"a","parent":null,"name":"Assets"},
-  {"type":"Donor","id":1,"parent":"a","number":"101","name":"Cash"},
-  {"type":"Donor","id":2,"parent":"a","number":"120","name":"Accounts Receivable"},
-  {"type":"Donor","id":3,"parent":"a","number":"140","name":"Merchandise Inventory"},
-  {"type":"Donor","id":4,"parent":"a","number":"150","name":"Supplies"},
-  {"type":"Donor","id":5,"parent":"a","number":"160","name":"Prepaid Insurance"},
-  {"type":"Donor","id":6,"parent":"a","number":"170","name":"Land"},
-  {"type":"Donor","id":7,"parent":"a","number":"175","name":"Buildings"},
-  {"type":"Donor","id":8,"parent":"a","number":"178","name":"Acc. Depreciation Buildings"},
-  {"type":"Donor","id":9,"parent":"a","number":"180","name":"Equipment"},
-  {"type":"Donor","id":10,"parent":"a","number":"188","name":"Acc. Depreciation Equipment"},
-  {"type":"Liability","id":"l","parent":null,"number":"l","name":"Liabilities"},
-  {"type":"Liability","id":11,"parent":"l","number":"210","name":"Notes Payable"},
-  {"type":"Liability","id":12,"parent":"l","number":"215","name":"Accounts Payable"},
-  {"type":"Liability","id":13,"parent":"l","number":"220","name":"Wages Payable"},
-  {"type":"Liability","id":14,"parent":"l","number":"230","name":"Interest Payable"},
-  {"type":"Liability","id":15,"parent":"l","number":"240","name":"Unearned Revenues"},
-  {"type":"Liability","id":16,"parent":"l","number":"250","name":"Mortage Loan Payable"},
-  {"type":"People","id":"eq","parent":null,"number":"eq","name":"People"},
-  {"type":"Intermediate","id":"r","parent":null,"number":"r","name":"Revenues"},
-  {"type":"Intermediate","id":"or","parent":"r","number":"","name":"Operating Intermediate"},
-  {"type":"Intermediate","id":17,"parent":"or","number":"310","name":"Service Revenues"},
-  {"type":"Intermediate","id":"nor","parent":"r","number":"","name":"Non-Operating Intermediate"},
-  {"type":"Intermediate","id":18,"parent":"nor","number":"810","name":"Interest Revenues"},
-  {"type":"Intermediate","id":19,"parent":"nor","number":"910","name":"Donor Sale Gain"},
-  {"type":"Intermediate","id":20,"parent":"nor","number":"960","name":"Donor Sale Loss"},
-  {"type":"Expense","id":"ex","parent":null,"number":"ex","name":"Expenses"},
-  {"type":"Expense","id":21,"parent":"ex","number":"500","name":"Salaries Expense"},
-  {"type":"Expense","id":22,"parent":"ex","number":"510","name":"Wages Expense"},
-  {"type":"Expense","id":23,"parent":"ex","number":"540","name":"Supplies Expense"},
-  {"type":"Expense","id":24,"parent":"ex","number":"560","name":"Rent Expense"},
-  {"type":"Expense","id":25,"parent":"ex","number":"570","name":"Utilities Expense"},
-  {"type":"Expense","id":26,"parent":"ex","number":"576","name":"Telephone Expense"},
-  {"type":"Expense","id":27,"parent":"ex","number":"610","name":"Advertising Expense"},
-  {"type":"Expense","id":28,"parent":"ex","number":"750","name":"Depreciation Expense"}
-]
+let disasters = [
+    "Camp Fire",
+    "Hurricane Maria",
+    "Hurricane Irma",
+    "Hurricane Harvey",
+    "2016 Great Smoky Mountains wildfires",
+    "Hurricane Matthew",
+    "2016 Louisiana floods",
+    "2016 West Virginia flood",
+    "January 2016 United States blizzard",
+    "October 2015 North American storm complex",
+    "2015 Utah floods",
+    "Okanogan Complex fire",
+    "2015 Texas–Oklahoma floods",
+    "November 2014 North American winter storm",
+    "April 2014 tornado outbreak",
+    "2014 Oso mudslide",
+    "Early 2014 North American cold wave",
+    "Yarnell Hill Fire",
+    "2013 Colorado floods",
+    "2013 Moore tornado",
+    "February 2013 nor'easter",
+    "2012 Colorado wildfires",
+    "Hurricane Sandy",
+    "2011 Joplin tornado",
+];
 
-var exampleLinks = [
-  {"source":8, "target":28, "value":Math.floor(Math.random() * 100)},
-  {"source":17, "target":18, "value":Math.floor(Math.random() * 100)},
-  {"source":22, "target":24, "value":Math.floor(Math.random() * 100)},
-  {"source":3, "target":13, "value":Math.floor(Math.random() * 100)},
-  {"source":24, "target":24, "value":Math.floor(Math.random() * 100)},
-  {"source":5, "target":4, "value":Math.floor(Math.random() * 100)},
-  {"source":15, "target":5, "value":Math.floor(Math.random() * 100)},
-  {"source":18, "target":8, "value":Math.floor(Math.random() * 100)},
-  {"source":3, "target":20, "value":Math.floor(Math.random() * 100)},
-  {"source":17, "target":18, "value":Math.floor(Math.random() * 100)},
-  {"source":22, "target":5, "value":Math.floor(Math.random() * 100)},
-  {"source":4, "target":24, "value":Math.floor(Math.random() * 100)},
-  {"source":26, "target":16, "value":Math.floor(Math.random() * 100)},
-  {"source":27, "target":6, "value":Math.floor(Math.random() * 100)},
-  {"source":23, "target":4, "value":Math.floor(Math.random() * 100)},
-  {"source":10, "target":24, "value":Math.floor(Math.random() * 100)},
-  {"source":17, "target":16, "value":Math.floor(Math.random() * 100)},
-  {"source":5, "target":12, "value":Math.floor(Math.random() * 100)},
-  {"source":12, "target":16, "value":Math.floor(Math.random() * 100)},
-  {"source":19, "target":5, "value":Math.floor(Math.random() * 100)},
-  {"source":15, "target":24, "value":Math.floor(Math.random() * 100)},
-  {"source":27, "target":2, "value":Math.floor(Math.random() * 100)},
-  {"source":26, "target":28, "value":Math.floor(Math.random() * 100)},
-  {"source":22, "target":24, "value":Math.floor(Math.random() * 100)},
-  {"source":3, "target":18, "value":Math.floor(Math.random() * 100)},
-  {"source":18, "target":5, "value":Math.floor(Math.random() * 100)},
-  {"source":25, "target":28, "value":Math.floor(Math.random() * 100)},
-  {"source":12, "target":1, "value":Math.floor(Math.random() * 100)},
-  {"source":28, "target":21, "value":Math.floor(Math.random() * 100)},
-  {"source":9, "target":16, "value":Math.floor(Math.random() * 100)},
-  {"source":14, "target":23, "value":Math.floor(Math.random() * 100)},
-  {"source":6, "target":1, "value":Math.floor(Math.random() * 100)},
-  {"source":9, "target":15, "value":Math.floor(Math.random() * 100)},
-  {"source":16, "target":24, "value":Math.floor(Math.random() * 100)},
-  {"source":22, "target":28, "value":Math.floor(Math.random() * 100)},
-  {"source":8, "target":21, "value":Math.floor(Math.random() * 100)},
-  {"source":22, "target":7, "value":Math.floor(Math.random() * 100)},
-  {"source":18, "target":10, "value":Math.floor(Math.random() * 100)},
-  {"source":"eq", "target":1, "value":Math.floor(Math.random() * 100)},
-  {"source":1, "target":21, "value":Math.floor(Math.random() * 100)},
-  {"source":1, "target":24, "value":Math.floor(Math.random() * 100)},
-  {"source":17, "target":1, "value":Math.floor(Math.random() * 100)},
-  {"source":Math.ceil(Math.random() * 28), "target":Math.ceil(Math.random() * 28), "value":Math.floor(Math.random() * 100)},
-  {"source":Math.ceil(Math.random() * 28), "target":Math.ceil(Math.random() * 28), "value":Math.floor(Math.random() * 100)},
-  {"source":Math.ceil(Math.random() * 28), "target":Math.ceil(Math.random() * 28), "value":Math.floor(Math.random() * 100)},
-  {"source":Math.ceil(Math.random() * 28), "target":Math.ceil(Math.random() * 28), "value":Math.floor(Math.random() * 100)},
-  {"source":Math.ceil(Math.random() * 28), "target":Math.ceil(Math.random() * 28), "value":Math.floor(Math.random() * 100)},
-  {"source":Math.ceil(Math.random() * 28), "target":Math.ceil(Math.random() * 28), "value":Math.floor(Math.random() * 100)},
-  {"source":Math.ceil(Math.random() * 28), "target":Math.ceil(Math.random() * 28), "value":Math.floor(Math.random() * 100)},
-  {"source":Math.ceil(Math.random() * 28), "target":Math.ceil(Math.random() * 28), "value":Math.floor(Math.random() * 100)},
-  {"source":Math.ceil(Math.random() * 28), "target":Math.ceil(Math.random() * 28), "value":Math.floor(Math.random() * 100)},
-  {"source":Math.ceil(Math.random() * 28), "target":Math.ceil(Math.random() * 28), "value":Math.floor(Math.random() * 100)}
-]
-exampleNodes = [
-    { "type": "Donor", "id": "d1", "parent": null, "name": "Donante 1" },
-    { "type": "Donor", "id": "d2", "parent": null, "name": "Donante 2" },
-    { "type": "Donor", "id": "d3", "parent": null, "name": "Donante 3" },
-    { "type": "Donor", "id": "d4", "parent": null, "name": "Donante 4" },
-    { "type": "Donor", "id": "d5", "parent": null, "name": "Donante 5" },
-    { "type": "Liability", "id": "1", "parent": null,  "name": "Intermediario #1" },
-    { "type": "People", "id": "2", "parent": null, "name": "Intermediario #2" },
-    { "type": "Intermediate", "id": "3", "parent": null, "name": "Intermediario #3" },
-    { "type": "Expense", "id": "4", "parent": null, "name": "Intermediario #4" },
-    { "type": "People", "id": "5", "parent": null, "name": "Intermediario #5" },
-
-]
-
-exampleLinks = [
-    { "source": "d1", "target": "1", "value": Math.floor(Math.random() * 100) },
-    { "source": "d2", "target": "2", "value": Math.floor(Math.random() * 100) },
-    { "source": "d3", "target": "1", "value": Math.floor(Math.random() * 100) },
-    { "source": "d4", "target": "2", "value": Math.floor(Math.random() * 100) },
-    { "source": "d5", "target": "2", "value": Math.floor(Math.random() * 100) },
-    { "source": "d5", "target": "5", "value": Math.floor(Math.random() * 100) },
-    { "source": "1", "target": "2", "value": Math.floor(Math.random() * 100) },
-    { "source": "2", "target": "3", "value": Math.floor(Math.random() * 100) },
-    { "source": "3", "target": "4", "value": Math.floor(Math.random() * 100) },
-    { "source": "3", "target": "4", "value": Math.floor(Math.random() * 100) },
-    { "source": "2", "target": "4", "value": Math.floor(Math.random() * 100) },
-]
-
+let ngos = [
+    "Doctors Without Borders",
+    "Mennonite Central Committee",
+    "Direct Relief International",
+    "International Red Cross",
+    "Brethren Disaster Ministries",
+    "The Ananda Marga Universal Relief Team",
+    "The Nazarene Disaster Response",
+    "REACT International",
+    "All Hands ",
+    "CityTeam International Disaster Response",
+    "OXFAM",
+    "Billy Graham Rapid Response Team",
+    "ADRA",
+    "Hope Worldwide",
+    "NECHAMA ",
+    "United Methodist Committee on Relief",
+    "Plan India",
+    "Save The Children",
+    "CARE",
+    "AmeriCares",
+    "GlobalGiving",
+    "International Relief Teams",
+    "Bill & Melinda Gates Foundation",
+    "ICCO",
+    "Relief International",
+    "World Health Organization (WHO)",
+    "Mission Aviation Fellowship",
+    "World Vision",
+    "Amref ",
+    "ShelterBox ",
+    "Medical Teams International ",
+    "Humanitarian Coalition ",
+    "GlobalMedic ",
+    "Engineers Without Borders ",
+];
 
 let currentData = null;
 
@@ -628,7 +571,7 @@ function createData(ndonors, nlayers, min_height, max_height) {
 
     layers.push([]); // Donors
     for (let i = 0; i < ndonors; i++) {
-        layers[0].push({ "type": "Donor", "id": ++id, "parent": null, "name": "Donante #" + i });
+        layers[0].push({ "type": "Donor", "id": ++id, "parent": null, "name": "Anonymous Donor" });
     }
 
     // Intermediarios
@@ -636,15 +579,27 @@ function createData(ndonors, nlayers, min_height, max_height) {
         let layer = [];
         let h = Math.floor(Math.random() * (max_height - min_height) + min_height);
         for (let j = 0; j < h; j++) {
-            layer.push({ "type": "Intermediate", "id": ++id, "parent": null, "name": "Intermediario #" + i});
+            let ngo = ngos.shift();
+            if (ngo !== undefined) {
+                layer.push({ "type": "Intermediate", "id": ++id, "parent": null, "name": ngo });
+            }
         }
         layers.push(layer);
     }
 
-    // Gente
-    layers.push([{ "type": "People", "id": ++id, "parent": null, "name": "People" }]);
+    // Disasters
+    layers.push(disasters.map(d => {
+        return { "type": "Disaster", "id": ++id, "parent": null, "name": d }
+    }));
+    /*
+    layers.push([
+        { "type": "Disaster", "id": ++id, "parent": null, "name": "Hurricane Katrina" },
+        { "type": "Disaster", "id": ++id, "parent": null, "name": "Puerto Rico" },
+        { "type": "Disaster", "id": ++id, "parent": null, "name": "Inundación de La Plata" }
+    ]);
+    */
 
-    exampleLinks = [];
+    let exampleLinks = [];
     for (let i = layers.length - 1; i > 0; i--) {
         let first = layers[i];
         let second = layers[i - 1];
@@ -664,7 +619,7 @@ function createData(ndonors, nlayers, min_height, max_height) {
         });
     }
 
-    exampleNodes = [];
+    let exampleNodes = [];
     layers.forEach(function (l) {
         l.forEach(function (e) {
             exampleNodes.push(e);
@@ -676,10 +631,13 @@ function createData(ndonors, nlayers, min_height, max_height) {
         links: exampleLinks
     });
 
+    updateChart(JSON.parse(currentData));
+}
 
+function updateChart(data) {
     biHiSankey
-        .nodes(exampleNodes)
-        .links(exampleLinks)
+        .nodes(data.nodes)
+        .links(data.links)
         .initializeNodes(function (node) {
             node.state = node.parent ? "contained" : "collapsed";
         })

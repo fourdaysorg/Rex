@@ -1,0 +1,2 @@
+# IBM Services used on the project
+The IBM Cloud Services used in our solution is BlockChain Platform. It provides all the tools necessary to make our solution a reality. It will help us to make sure that the transactions are transparent and to eliminate the risk of fraud.
