@@ -9,6 +9,14 @@
 </ion-header>
 
 <ion-content>
+  <ion-card *ngFor ="let campaign of campaigns">
+    <ion-card-header>
+      <ion-card-subtitle>{{campaign.Country}}</ion-card-subtitle>
+      <ion-card-title>{{campaign.Name}}</ion-card-title>
+    </ion-card-header>
 
-
+    <ion-card-content>
+      {{campaign.Description}}
+    </ion-card-content>
+  </ion-card>
 </ion-content>
