@@ -51,5 +51,11 @@ namespace RexWeb.Controllers
             var model = DonationModel.FromEntity(donations.GetById(id));
             return View(model);
         }
+
+        [HttpGet]
+        public IActionResult Tracking()
+        {
+            return View();
+        }
     }
 }
