@@ -6,10 +6,17 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./receive-donation.page.scss'],
 })
 export class ReceiveDonationPage implements OnInit {
-
+  public waiting: boolean = false;
   constructor() { }
 
   ngOnInit() {
+    let me = this;
+    setTimeout(() => {
+      me.waiting = true;
+      setTimeout(() => {
+        me.waiting = false;
+      }, 5000);
+    }, 10000);
   }
 
 }

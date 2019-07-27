@@ -1,9 +1,34 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>receiveDonation</ion-title>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-icon slot="end" size="large" name="contact"></ion-icon>
+    <ion-back-button slot="start"></ion-back-button>
+    <ion-title>Receive a Donation</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
+  <div #overlay class="overlay" *ngIf="waiting">
+    <ion-spinner #spinner class="spinner"></ion-spinner>
+  </div>
+  <ion-grid>
+    <ion-row>
+      <ion-card style="width: 100%">
+        <ion-card-content>
+          <ion-img src="/assets/img/qr.svg"></ion-img>
+        </ion-card-content>
+      </ion-card>
+
+    </ion-row>
+    <ion-row>
+      <ion-spinner name="dots"></ion-spinner>
+      <ion-label>
+        <h1>
+            Waiting for connection</h1>
+      </ion-label>
+    </ion-row>
+  </ion-grid>
 
 </ion-content>

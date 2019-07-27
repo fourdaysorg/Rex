@@ -32,6 +32,11 @@ export class AppComponent {
       icon:'cube'
     },
     {
+      title:'Receive Donations',
+      url:'/receive-donation',
+      icon:'heart'
+    },
+    {
       title:'Settings',
       url:'/lala',
       icon:'settings'
