@@ -12,7 +12,8 @@ const routes: Routes = [
     loadChildren: () => import('./home/home.module').then(m => m.HomePageModule)
   },
   { path: 'campaigns', loadChildren: './campaigns/campaigns.module#CampaignsPageModule' },
-  { path: 'campaign-details', loadChildren: './campaign-details/campaign-details.module#CampaignDetailsPageModule' }
+  { path: 'campaign-details', loadChildren: './campaign-details/campaign-details.module#CampaignDetailsPageModule' },
+  { path: 'donate', loadChildren: './donate/donate.module#DonatePageModule' }
 ];
 
 @NgModule({
