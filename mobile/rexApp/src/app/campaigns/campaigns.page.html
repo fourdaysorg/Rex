@@ -9,7 +9,7 @@
 </ion-header>
 
 <ion-content>
-  <ion-card *ngFor ="let campaign of campaigns">
+  <ion-card *ngFor ="let campaign of campaigns" (click)="navigateTo(campaign)">
     <ion-card-header>
       <ion-card-subtitle>{{campaign.Country}}</ion-card-subtitle>
       <ion-card-title>{{campaign.Name}}</ion-card-title>

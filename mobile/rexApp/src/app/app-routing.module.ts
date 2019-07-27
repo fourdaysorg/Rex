@@ -11,7 +11,8 @@ const routes: Routes = [
     path: 'home',
     loadChildren: () => import('./home/home.module').then(m => m.HomePageModule)
   },
-  { path: 'campaigns', loadChildren: './campaigns/campaigns.module#CampaignsPageModule' }
+  { path: 'campaigns', loadChildren: './campaigns/campaigns.module#CampaignsPageModule' },
+  { path: 'campaign-details', loadChildren: './campaign-details/campaign-details.module#CampaignDetailsPageModule' }
 ];
 
 @NgModule({
