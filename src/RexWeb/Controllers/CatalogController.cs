@@ -16,5 +16,11 @@ namespace RexWeb.Controllers
             var models = repo.GetAll().Select(CampaignModel.FromEntity);
             return View(models);
         }
+
+        public IActionResult Details(int id)
+        {
+            var model = CampaignModel.FromEntity(repo.GetById(id));
+            return View(model);
+        }
     }
 }
