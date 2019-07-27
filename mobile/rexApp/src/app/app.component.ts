@@ -17,9 +17,24 @@ export class AppComponent {
       icon: 'home'
     },
     {
-      title: 'List',
+      title: 'Campaigns',
       url: '/list',
       icon: 'list'
+    },
+    {
+      title:'Submit Campaign',
+      url:'/lala',
+      icon:'play'
+    },
+    {
+      title:'My Donations',
+      url:'/lala',
+      icon:'play'
+    },
+    {
+      title:'Settings',
+      url:'/lala',
+      icon:'play'
     }
   ];
 
