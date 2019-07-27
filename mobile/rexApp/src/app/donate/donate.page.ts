@@ -10,6 +10,7 @@ import { Campaign } from '../campaign';
 export class DonatePage implements OnInit {
   campaign: Campaign;
   donations: any[]
+  itemName: string="";
   constructor(private route: ActivatedRoute, private router: Router) {
     this.route.queryParams.subscribe(params => {
       if (this.router.getCurrentNavigation().extras.state) {
@@ -27,10 +28,21 @@ export class DonatePage implements OnInit {
   increase(item) {
     item.count++;
   }
-
   decrease(item) {
     if (item.count > 0) {
       item.count--;
     }
   }
+  addItem() {
+    this.donations.push({ persistent: false, name: this.itemName + ":", icon: "", count: 0 });
+    this.itemName="";
+  }
+
+  removeItem(item) {
+    var index = this.donations.indexOf(item);
+    if (index > -1) {
+      this.donations.splice(index, 1);
+    }
+  }
+
 }

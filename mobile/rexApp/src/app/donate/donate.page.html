@@ -1,27 +1,46 @@
 <ion-header>
   <ion-toolbar>
-      <ion-buttons slot="start">
-        <ion-menu-button></ion-menu-button>
-      </ion-buttons>
-      <ion-icon slot="end" size="large" name="contact"></ion-icon>
-      <ion-back-button slot="start"></ion-back-button>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-icon slot="end" size="large" name="contact"></ion-icon>
+    <ion-back-button slot="start"></ion-back-button>
     <ion-title>Donate to {{campaign.Name}}</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-    <ion-list>
-      <ion-list-header>
-        <ion-label>Donated Items</ion-label>
-      </ion-list-header>
-    <ion-item *ngFor="let item of donations">
-        <ion-icon slot="start" [name]="item.icon"></ion-icon>
-        <ion-label>{{item.name}}</ion-label>
-        <ion-input type="number" [(ngModel)]="item.count" min="0" max="99" style="width:15vh"></ion-input>
-        <ion-button (click)="increase(item)" ><ion-icon name="add"></ion-icon></ion-button>
-        <ion-button (click)="decrease(item)"><ion-icon name="remove"></ion-icon></ion-button>
-      </ion-item>
-    </ion-list>
-  
+  <ion-grid>
+    <ion-row>
+      <ion-list>
+        <ion-list-header>
+          <ion-label>Donated Items</ion-label>
+        </ion-list-header>
+        <ion-item *ngFor="let item of donations">
+          <ion-button *ngIf="!item.persistent"  slot="start" color="danger" (click)="removeItem(item)">
+            <ion-icon name="close"></ion-icon>
+          </ion-button>
+          <ion-icon slot="start" *ngIf="item.persistent" [name]="item.icon"></ion-icon>
+          <ion-label>{{item.name}}</ion-label>
+          <ion-input type="number" [(ngModel)]="item.count" min="0" max="99" style="width:15vh"></ion-input>
+          <ion-button (click)="increase(item)">
+            <ion-icon name="add"></ion-icon>
+          </ion-button>
+          <ion-button (click)="decrease(item)">
+            <ion-icon name="remove"></ion-icon>
+          </ion-button>
+        </ion-item>
+      </ion-list>
+
+    </ion-row>
+    <ion-row>
+      <ion-input type="text" autocapitalize="on" clearInput  placeholder="Something else?" [(ngModel)]="itemName"></ion-input>
+      <ion-button  (click)="addItem()">
+        <ion-icon slot="start" name="add-circle"></ion-icon>
+        Add
+      </ion-button>
+    </ion-row>
+  </ion-grid>
+
 
 </ion-content>
