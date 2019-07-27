@@ -499,6 +499,32 @@ function update () {
 
 }
 
+let disasters = [
+    "Camp Fire",
+    "Hurricane Maria",
+    "Hurricane Irma",
+    "Hurricane Harvey",
+    "2016 Great Smoky Mountains wildfires",
+    "Hurricane Matthew",
+    "2016 Louisiana floods",
+    "2016 West Virginia flood",
+    "January 2016 United States blizzard",
+    "October 2015 North American storm complex",
+    "2015 Utah floods",
+    "Okanogan Complex fire",
+    "2015 Texas–Oklahoma floods",
+    "November 2014 North American winter storm",
+    "April 2014 tornado outbreak",
+    "2014 Oso mudslide",
+    "Early 2014 North American cold wave",
+    "Yarnell Hill Fire",
+    "2013 Colorado floods",
+    "2013 Moore tornado",
+    "February 2013 nor'easter",
+    "2012 Colorado wildfires",
+    "Hurricane Sandy",
+    "2011 Joplin tornado",
+];
 
 let ngos = [
     "Doctors Without Borders",
@@ -562,11 +588,16 @@ function createData(ndonors, nlayers, min_height, max_height) {
     }
 
     // Disasters
+    layers.push(disasters.map(d => {
+        return { "type": "Disaster", "id": ++id, "parent": null, "name": d }
+    }));
+    /*
     layers.push([
         { "type": "Disaster", "id": ++id, "parent": null, "name": "Hurricane Katrina" },
         { "type": "Disaster", "id": ++id, "parent": null, "name": "Puerto Rico" },
         { "type": "Disaster", "id": ++id, "parent": null, "name": "Inundación de La Plata" }
     ]);
+    */
 
     let exampleLinks = [];
     for (let i = layers.length - 1; i > 0; i--) {
