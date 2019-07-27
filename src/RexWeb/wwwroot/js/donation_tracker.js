@@ -591,6 +591,24 @@ var exampleLinks = [
   {"source":Math.ceil(Math.random() * 28), "target":Math.ceil(Math.random() * 28), "value":Math.floor(Math.random() * 100)},
   {"source":Math.ceil(Math.random() * 28), "target":Math.ceil(Math.random() * 28), "value":Math.floor(Math.random() * 100)}
 ]
+exampleNodes = [
+    { "type": "Asset", "id": "d", "parent": null, "name": "Donante" },
+    { "type": "Liability", "id": "1", "parent": null,  "name": "Intermediario #1" },
+    { "type": "Equity", "id": "2", "parent": null, "name": "Intermediario #2" },
+    { "type": "Revenue", "id": "3", "parent": null, "name": "Intermediario #3" },
+    { "type": "Expense", "id": "4", "parent": null, "name": "Intermediario #4" },
+]
+
+exampleLinks = [
+    { "source": "d", "target": "1", "value": Math.floor(Math.random() * 100) },
+    { "source": "d", "target": "2", "value": 42 },
+    { "source": "1", "target": "2", "value": Math.floor(Math.random() * 100) },
+    { "source": "2", "target": "3", "value": Math.floor(Math.random() * 100) },
+    { "source": "3", "target": "4", "value": Math.floor(Math.random() * 100) },
+    { "source": "3", "target": "4", "value": Math.floor(Math.random() * 100) },
+    { "source": "2", "target": "4", "value": Math.floor(Math.random() * 100) },
+]
+
 
 biHiSankey
   .nodes(exampleNodes)
