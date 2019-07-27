@@ -14,9 +14,14 @@ namespace RexWeb.Business
                 .Select(i => new Campaign()
                 {
                     Id = i,
-                    Name = "Huracán Katrina",
+                    Name = "Huracán Katrina #" + i.ToString(),
                     ShortDescription = "El huracán Katrina fue uno de los más destructivos y el que causó más víctimas mortales de la temporada de huracanes en el Atlántico de 2005."
                 }));
+        }
+
+        public Campaign GetById(int id)
+        {
+            return campaigns.Find(c => id == c.Id);
         }
 
         public IEnumerable<Campaign> GetAll() { return campaigns; }
