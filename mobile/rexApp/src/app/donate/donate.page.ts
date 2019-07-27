@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router, ActivatedRoute } from '@angular/router';
+import { Router, ActivatedRoute, NavigationExtras } from '@angular/router';
 import { Campaign } from '../campaign';
 import { NavController } from '@ionic/angular';
 
@@ -51,8 +51,12 @@ export class DonatePage implements OnInit {
     let me = this;
     setTimeout(() => {
       me.waiting = false;
-      this.navController.navigateForward("confirm-donation")
-      //TODO: next screen
+      let navigationExtras: NavigationExtras = {
+        state: {
+          donations:me.donations
+        }
+      };
+      this.navController.navigateForward(["confirm-donation"], navigationExtras);
     }, 5000);
   }
 }
