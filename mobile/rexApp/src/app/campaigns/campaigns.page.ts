@@ -17,7 +17,16 @@ export class CampaignsPage implements OnInit {
     this.campaigns.push(
       new Campaign("Hurricane Katrina"
         , "U.S.A.",
-        "Extremely destructive and deadly Category 5 hurricane that made landfall on Florida and Louisiana"));
+        "Extremely destructive and deadly Category 5 hurricane that made landfall on Florida and Louisiana",
+        "/assets/img/kat/img1.jpg",
+        "Destroyed home on New Orleans",
+        "The storm originated over the Bahamas on August 23, 2005, from the merger of a tropical wave and the remnants of Tropical Depression Ten. Early on the following day, the tropical depression then intensified into a tropical storm as it headed generally westward toward Florida, strengthening into a hurricane only two hours before making landfall at Hallandale Beach and Aventura on August 25",
+        [{ name: "Water Bottles", icon: "water" },
+        { name: "Clothes", icon: "shirt" },
+        { name: "Food", icon: "nutrition" }
+        ],
+        []
+      ));
 
   }
   navigateTo(campaign: Campaign) {
@@ -26,6 +35,6 @@ export class CampaignsPage implements OnInit {
         campaign: campaign
       }
     };
-    this.navController.navigateForward(["campaign-details"],navigationExtras);
+    this.navController.navigateForward(["campaign-details"], navigationExtras);
   }
 }

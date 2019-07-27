@@ -5,19 +5,39 @@
     </ion-buttons>
     <ion-icon slot="end" size="large" name="contact"></ion-icon>
     <ion-back-button slot="start"></ion-back-button>
-    <ion-title>CampaignDetails</ion-title>
+    <ion-title>{{campaign.Name}}</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-  <ion-card>
-    <ion-card-header *ngIf="campaign">
-      <ion-card-subtitle>{{campaign.Country}}</ion-card-subtitle>
-      <ion-card-title>{{campaign.Name}}</ion-card-title>
-    </ion-card-header>
 
-    <ion-card-content>
-      {{campaign.Description}}
-    </ion-card-content>
-  </ion-card>
+  <ion-grid>
+    <ion-row>
+      <ion-card>
+        <ion-card-content>
+          <img [src]="campaign.Photo" />
+          <ion-card-subtitle>{{campaign.PhotoDescription}}</ion-card-subtitle>
+        </ion-card-content>
+      </ion-card>
+    </ion-row>
+    <ion-row>
+      <ion-card>
+        <ion-card-content>
+          <ion-label>{{campaign.LongDescription}}</ion-label>
+        </ion-card-content>
+      </ion-card>
+    </ion-row>
+    <ion-row>
+      <ion-list>
+        <ion-list-header>
+          <ion-label>Needed Items</ion-label>
+        </ion-list-header>
+        <ion-item *ngFor="let item of campaign.AvailableItems">
+          <ion-icon slot="start" [name]="item.icon"></ion-icon>
+          <ion-label>{{item.name}}</ion-label>
+        </ion-item>
+      </ion-list>
+    </ion-row>
+  </ion-grid>
+
 </ion-content>
