@@ -18,7 +18,7 @@ export class AppComponent {
     },
     {
       title: 'Campaigns',
-      url: '/list',
+      url: '/campaigns',
       icon: 'list'
     },
     {
