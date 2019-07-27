@@ -592,16 +592,26 @@ var exampleLinks = [
   {"source":Math.ceil(Math.random() * 28), "target":Math.ceil(Math.random() * 28), "value":Math.floor(Math.random() * 100)}
 ]
 exampleNodes = [
-    { "type": "Asset", "id": "d", "parent": null, "name": "Donante" },
+    { "type": "Asset", "id": "d1", "parent": null, "name": "Donante 1" },
+    { "type": "Asset", "id": "d2", "parent": null, "name": "Donante 2" },
+    { "type": "Asset", "id": "d3", "parent": null, "name": "Donante 3" },
+    { "type": "Asset", "id": "d4", "parent": null, "name": "Donante 4" },
+    { "type": "Asset", "id": "d5", "parent": null, "name": "Donante 5" },
     { "type": "Liability", "id": "1", "parent": null,  "name": "Intermediario #1" },
     { "type": "Equity", "id": "2", "parent": null, "name": "Intermediario #2" },
     { "type": "Revenue", "id": "3", "parent": null, "name": "Intermediario #3" },
     { "type": "Expense", "id": "4", "parent": null, "name": "Intermediario #4" },
+    { "type": "Equity", "id": "5", "parent": null, "name": "Intermediario #5" },
+
 ]
 
 exampleLinks = [
-    { "source": "d", "target": "1", "value": Math.floor(Math.random() * 100) },
-    { "source": "d", "target": "2", "value": 42 },
+    { "source": "d1", "target": "1", "value": Math.floor(Math.random() * 100) },
+    { "source": "d2", "target": "2", "value": Math.floor(Math.random() * 100) },
+    { "source": "d3", "target": "1", "value": Math.floor(Math.random() * 100) },
+    { "source": "d4", "target": "2", "value": Math.floor(Math.random() * 100) },
+    { "source": "d5", "target": "2", "value": Math.floor(Math.random() * 100) },
+    { "source": "d5", "target": "5", "value": Math.floor(Math.random() * 100) },
     { "source": "1", "target": "2", "value": Math.floor(Math.random() * 100) },
     { "source": "2", "target": "3", "value": Math.floor(Math.random() * 100) },
     { "source": "3", "target": "4", "value": Math.floor(Math.random() * 100) },
@@ -609,15 +619,65 @@ exampleLinks = [
     { "source": "2", "target": "4", "value": Math.floor(Math.random() * 100) },
 ]
 
+function createData(ndonors, nlayers, min_height, max_height) {
+    let id = 0;
+    let layers = [];
 
-biHiSankey
-  .nodes(exampleNodes)
-  .links(exampleLinks)
-  .initializeNodes(function (node) {
-    node.state = node.parent ? "contained" : "collapsed";
-  })
-  .layout(LAYOUT_INTERATIONS);
+    layers.push([]); // Donors
+    for (let i = 0; i < ndonors; i++) {
+        layers[0].push({ "type": "Asset", "id": ++id, "parent": null, "name": "Donante #" + i });
+    }
 
-disableUserInterractions(2 * TRANSITION_DURATION);
+    // Intermediarios
+    for (let i = 0; i < nlayers; i++) {
+        let layer = [];
+        let h = Math.floor(Math.random() * (max_height - min_height) + min_height);
+        for (let j = 0; j < h; j++) {
+            layer.push({ "type": "Revenue", "id": ++id, "parent": null, "name": "Intermediario #" + i});
+        }
+        layers.push(layer);
+    }
 
-update();
+    // Gente
+    layers.push([{ "type": "Equity", "id": ++id, "parent": null, "name": "People" }]);
+
+    exampleLinks = [];
+    for (let i = 0; i < layers.length - 1; i++) {
+        let first = layers[i];
+        let second = layers[i + 1];
+        first.forEach(function (s) {
+            let links = [];
+            while (links.length == 0) {
+                second.forEach(function (t) {
+                    links.push({ "source": s.id, "target": t.id, "value": 10 });
+                });
+            }
+
+            links.forEach(function (l) {
+                exampleLinks.push(l);
+            });
+        });
+    }
+
+    exampleNodes = [];
+    layers.forEach(function (l) {
+        l.forEach(function (e) {
+            exampleNodes.push(e);
+        });
+    });
+
+
+    biHiSankey
+        .nodes(exampleNodes)
+        .links(exampleLinks)
+        .initializeNodes(function (node) {
+            node.state = node.parent ? "contained" : "collapsed";
+        })
+        .layout(LAYOUT_INTERATIONS);
+
+    disableUserInterractions(2 * TRANSITION_DURATION);
+
+    update();
+}
+
+createData(10, 4, 1, 5);
