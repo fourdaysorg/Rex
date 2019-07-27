@@ -1,0 +1,48 @@
+@model IEnumerable<DonationModel>
+
+@{
+    ViewData["Title"] = "Donations";
+}
+
+<main class="col-md-9 ml-sm-auto col-lg-10 px-4" role="main">
+    <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3">
+        <h1 class="h2">Donations</h1>
+    </div>
+    
+    <div class="table-responsive">
+        <table class="table table-striped table-sm table-hover">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Campaign</th>
+                    <th>Descripción</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model.Select((each, i) => new { Donation = each, Index = i + 1}))
+                {
+                <tr>
+                    <th scope="row">@item.Index</th>
+                    <td>@item.Donation.CampaignName</td>
+                    <td>@item.Donation.Description</td>
+                    <td>
+                        <div class="btn-group float-right">
+                            <button aria-expanded="false" aria-haspopup="true" class="btn btn-sm btn-outline-secondary dropdown-toggle" data-toggle="dropdown" id="actions_button_fdb06901-8c5b-4916-afb0-c8fb995619fe" type="button">Actions</button>
+                            <div aria-labelledby="actions_button_fdb06901-8c5b-4916-afb0-c8fb995619fe" class="dropdown-menu">
+                                <a class="dropdown-item" href=@("/Donation/Details/" + @item.Donation.Id)>
+                                    <i class="far fa-eye mr-2"></i>
+                                    Details
+                                </a>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+    <div aria-atomic="true" aria-live="polite" class="d-flex justify-content-center align-items-center" style="min-height: 200px;">
+        <div style="z-index: 999999; position: fixed; right: 15px; top: 15px"></div>
+    </div>
+</main>

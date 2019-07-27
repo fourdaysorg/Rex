@@ -13,7 +13,6 @@
         <div class="col">
             <form asp-action="Create">
                 <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-                @Html.HiddenFor(model => model.Id)
                 @Html.HiddenFor(model => model.CampaignId)
                 <div class="form-group">
                     <label asp-for="CampaignName" class="control-label"></label>

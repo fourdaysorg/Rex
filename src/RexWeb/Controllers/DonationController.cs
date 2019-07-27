@@ -10,12 +10,20 @@ namespace RexWeb.Controllers
 {
     public class DonationController : Controller
     {
-        private CampaignRepository campaignRepository = new CampaignRepository();
+        private CampaignRepository campaigns = new CampaignRepository();
+        private DonationRepository donations = new DonationRepository();
+
+        [HttpGet]
+        public IActionResult Index()
+        {
+            var models = donations.GetAll().Select(DonationModel.FromEntity);
+            return View(models);
+        }
 
         [HttpGet]
         public IActionResult Create(int id)
         {
-            var campaign = campaignRepository.GetById(id);
+            var campaign = campaigns.GetById(id);
             var model = new DonationModel();
             model.CampaignId = campaign.Id;
             model.CampaignName = campaign.Name;
@@ -29,9 +37,11 @@ namespace RexWeb.Controllers
             {
                 return View(model);
             }
-
-
-            return View(model);
+            var entity = new Donation();
+            entity.Description = model.Description;
+            entity.Campaign = campaigns.GetById(model.CampaignId);
+            donations.Add(entity);
+            return RedirectToAction("Index");
         }
     }
 }
