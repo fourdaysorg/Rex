@@ -5,11 +5,12 @@
     </ion-buttons>
     <ion-icon slot="end" size="large" name="contact"></ion-icon>
     <ion-back-button slot="start"></ion-back-button>
-    <ion-title>Donate to {{campaign.Name}}</ion-title>
+    <ion-title>Donate to </ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
+  <ion-title>{{campaign.Name}}</ion-title>
   <ion-grid>
     <ion-row>
       <ion-list>
@@ -40,7 +41,14 @@
         Add
       </ion-button>
     </ion-row>
+  <ion-row>
+    
+    <ion-button expand="block"  color="light" style="width: 47%"><ion-icon slot="start" name="qr-scanner" ></ion-icon>Scan QR </ion-button>
+    
+    <ion-button expand="block"  color="light" style="width: 47%"><ion-icon slot="start" name="logo-rss"></ion-icon>Use NFC</ion-button>
+  </ion-row>
   </ion-grid>
+
 
 
 </ion-content>
