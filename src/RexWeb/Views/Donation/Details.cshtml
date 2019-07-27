@@ -1,0 +1,36 @@
+﻿@model RexWeb.Models.DonationModel
+
+@{
+    ViewData["Title"] = "Donation Details";
+}
+
+<main class="col-md-9 ml-sm-auto col-lg-10 px-4" role="main">
+    <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3">
+        <h1 class="h2">Donation details</h1>
+    </div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Id)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Id)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Description)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Description)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.CampaignName)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.CampaignName)
+        </dd>
+    </dl>
+    <div>
+        <a asp-action="Index">Back to List</a>
+    </div>
+
+</main>

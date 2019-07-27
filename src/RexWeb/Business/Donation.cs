@@ -5,7 +5,9 @@ using System.Threading.Tasks;
 
 namespace RexWeb.Business
 {
-    public class DonationRepository : Repository<Donation> { }
+    public class DonationRepository : Repository<Donation>
+    {
+    }
 
     public class Donation : IEntity
     {
