@@ -25,5 +25,10 @@ namespace RexWeb.Business
         {
             entities.Add(entity);
         }
+
+        public int Count()
+        {
+            return entities.Count;
+        }
     }
 }

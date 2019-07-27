@@ -11,6 +11,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Content Update="Views\Donation\Tracking.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
     <Content Update="Views\Donation\Index.cshtml">
       <Pack>$(IncludeRazorContentInPack)</Pack>
     </Content>

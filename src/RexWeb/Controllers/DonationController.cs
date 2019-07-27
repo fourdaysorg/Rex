@@ -40,8 +40,22 @@ namespace RexWeb.Controllers
             var entity = new Donation();
             entity.Description = model.Description;
             entity.Campaign = campaigns.GetById(model.CampaignId);
+            entity.Id = donations.Count() + 1;
             donations.Add(entity);
             return RedirectToAction("Index");
+        }
+
+        [HttpGet]
+        public IActionResult Details(int id)
+        {
+            var model = DonationModel.FromEntity(donations.GetById(id));
+            return View(model);
+        }
+
+        [HttpGet]
+        public IActionResult Tracking()
+        {
+            return View();
         }
     }
 }

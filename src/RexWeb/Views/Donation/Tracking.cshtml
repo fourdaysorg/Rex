@@ -1,0 +1,62 @@
+﻿@model RexWeb.Models.DonationModel
+
+@{
+    ViewData["Title"] = "Donation Details";
+}
+
+<main class="col-md-9 ml-sm-auto col-lg-10 px-4" role="main">
+    <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3">
+        <h1 class="h2">Donations</h1>
+    </div>
+    <hr />
+    <div>
+        <form>
+            <div class="form-row">
+                <div class="form-group col-md-4">
+                    <label for="inputState">Campaign</label>
+                    <select id="inputState" class="form-control">
+                        <option selected>Choose...</option>
+                        <option>Hurricane Katrina</option>
+                        <option>Puerto Rico</option>
+                        <option>Inundación en La Plata</option>
+                    </select>
+                </div>
+                <div class="form-group col-md-4">
+                    <label for="inputState">Organization</label>
+                    <select id="inputState" class="form-control">
+                        <option selected>Choose...</option>
+                        <option>UNICEF</option>
+                        <option>Red Cross</option>                        
+                    </select>
+                </div>
+                <div class="form-group col-md-4">
+                    <label for="inputState">Country</label>
+                    <select id="inputState" class="form-control">
+                        <option selected>Choose...</option>
+                        <option>USA</option>
+                        <option>Argentina</option>
+                        <option>Brazil</option>
+                        <option>Uruguay</option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="inputAddress">Search</label>
+                <input type="text" class="form-control" id="inputAddress" placeholder="Search...">
+            </div>
+        </form>
+
+    </div>
+    <div>
+        <div id="chart"></div>
+    </div>
+    <div>
+        <a asp-action="Index">Back to List</a>
+    </div>
+
+</main>
+@section Scripts {
+<script type="text/javascript">
+    createData(7, 3, 1, 15);
+</script>
+}

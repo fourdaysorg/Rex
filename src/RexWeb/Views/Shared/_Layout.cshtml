@@ -1,17 +1,18 @@
 ﻿<!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="utf-8">
-        <meta content="width=device-width, initial-scale=1, shrink-to-fit=no" name="viewport">
-        <meta content="RexWeb v0.0.1" name="description">
-        <meta content="FourDaysOrg" name="author">
-        <title>RexWeb</title>
-        <link href="~/assets/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css">
-        <link href="~/assets/font-awesome/css/all.css" rel="stylesheet" type="text/css">
-        <link href="~/assets/datatables/css/jquery.dataTables.min.css" rel="stylesheet" type="text/css">
-        <link href="~/assets/bootstrap-select/css/bootstrap-select.min.css" rel="stylesheet" type="text/css">
-        <link href="~/css/screen.css" rel="stylesheet" type="text/css">
-    </head>
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1, shrink-to-fit=no" name="viewport">
+    <meta content="RexWeb v0.0.1" name="description">
+    <meta content="FourDaysOrg" name="author">
+    <title>RexWeb</title>
+    <link href="~/assets/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+    <link href="~/assets/font-awesome/css/all.css" rel="stylesheet" type="text/css">
+    <link href="~/assets/datatables/css/jquery.dataTables.min.css" rel="stylesheet" type="text/css">
+    <link href="~/assets/bootstrap-select/css/bootstrap-select.min.css" rel="stylesheet" type="text/css">
+    <link href="~/css/screen.css" rel="stylesheet" type="text/css">
+    <link href="~/css/donation_tracker.css" rel="stylesheet">
+</head>
     <body>
         <nav class="navbar navbar-dark fixed-top bg-dark flex-md-nowrap p-0 shadow">
             <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="/">
@@ -46,7 +47,7 @@
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="/Donation/Index">
+                                <a class="nav-link" href="/Donation/Tracking">
                                     <span class="fa-li">
                                         <span class="fas fa-truck-moving"></span>
                                     </span>
@@ -75,6 +76,10 @@
         <script src="~/assets/datatables/js/jquery.dataTables.min.js" type="text/javascript"></script>
         <script src="~/assets/bootstrap-select/js/bootstrap-select.min.js" type="text/javascript"></script>
         <script src="~/js/base.js" type="text/javascript"></script>
+
+        <script src="https://d3js.org/d3.v3.min.js"></script>
+        <script src="https://cdn.rawgit.com/Neilos/bihisankey/master/bihisankey.js"></script>
+        <script src="~/js/donation_tracker.js"></script>
         @RenderSection("Scripts", required: false)
     </body>
 </html>
