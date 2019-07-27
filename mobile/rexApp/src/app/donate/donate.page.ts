@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Campaign } from '../campaign';
+import { NavController } from '@ionic/angular';
 
 @Component({
   selector: 'app-donate',
@@ -12,7 +13,7 @@ export class DonatePage implements OnInit {
   waiting: boolean = false;
   donations: any[]
   itemName: string = "";
-  constructor(private route: ActivatedRoute, private router: Router) {
+  constructor(private route: ActivatedRoute, private router: Router,private navController: NavController) {
     this.route.queryParams.subscribe(params => {
       if (this.router.getCurrentNavigation().extras.state) {
         this.campaign = this.router.getCurrentNavigation().extras.state.campaign;
@@ -50,6 +51,7 @@ export class DonatePage implements OnInit {
     let me = this;
     setTimeout(() => {
       me.waiting = false;
+      this.navController.navigateForward("confirm-donation")
       //TODO: next screen
     }, 5000);
   }

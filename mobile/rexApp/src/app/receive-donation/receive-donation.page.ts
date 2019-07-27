@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { NavController } from '@ionic/angular';
 
 @Component({
   selector: 'app-receive-donation',
@@ -7,7 +8,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ReceiveDonationPage implements OnInit {
   public waiting: boolean = false;
-  constructor() { }
+  constructor(private navController: NavController) { }
 
   ngOnInit() {
     let me = this;
@@ -15,6 +16,7 @@ export class ReceiveDonationPage implements OnInit {
       me.waiting = true;
       setTimeout(() => {
         me.waiting = false;
+        this.navController.navigateForward("confirm-reception");
       }, 5000);
     }, 10000);
   }
