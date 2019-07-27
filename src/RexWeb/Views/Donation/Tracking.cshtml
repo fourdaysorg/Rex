@@ -14,7 +14,7 @@
             <div class="form-row">
                 <div class="form-group col-md-4">
                     <label for="campaignDropdown">Campaign</label>
-                    <select id="campaignDropdown" name="campaignDropdown" class="form-control">
+                    <select id="campaignDropdown" name="campaignDropdown" class="form-control selectpicker" multiple="true">
                         <option selected>Choose...</option>
                         <option>Camp Fire</option>
                         <option>Hurricane Maria</option>
@@ -316,17 +316,19 @@
     let originalData = currentData;
 
     $("#campaignDropdown").on("change", function () {
-        let selected = this.value;
+        let selected = Array.from(campaignDropdown.selectedOptions).map(each => each.value);
         console.log(selected);
 
-        if (selected == "Choose...") {
+        if (selected.length === 0) {
             updateChart(JSON.parse(originalData));
         } else {
             let nodes = new Set();
             let links = new Set();
             let data = JSON.parse(originalData);
-            let node = data.nodes.find(n => n.name == selected);
-            addParents(node, data, nodes, links);
+            let selectedNodes = data.nodes.filter(n => selected.includes(n.name));
+            selectedNodes.forEach(node => {
+                addParents(node, data, nodes, links);
+            });
 
             let newData = {
                 nodes: Array.from(nodes).sort((a, b) => a.id - b.id),
