@@ -1,0 +1,17 @@
+.overlay {
+    position: absolute;
+    top:0px;
+    left:0px;
+    height: 100%;
+    width: 100%;
+    //TODO:this z-index is not necesarily correct.
+    z-index: 1000000000;
+    background-color: rgba(0,0,0,0.5);
+  }
+  .spinner{
+    width: 20%;
+    height: 20%;
+    position: fixed;
+    top:40%;
+    left:40%;
+}

@@ -10,6 +10,9 @@
 </ion-header>
 
 <ion-content>
+  <div #overlay class="overlay" *ngIf="waiting">
+    <ion-spinner #spinner class="spinner"></ion-spinner>
+  </div>
   <ion-title>{{campaign.Name}}</ion-title>
   <ion-grid>
     <ion-row>
@@ -18,7 +21,7 @@
           <ion-label>Donated Items</ion-label>
         </ion-list-header>
         <ion-item *ngFor="let item of donations">
-          <ion-button *ngIf="!item.persistent"  slot="start" color="danger" (click)="removeItem(item)">
+          <ion-button *ngIf="!item.persistent" slot="start" color="danger" (click)="removeItem(item)">
             <ion-icon name="close"></ion-icon>
           </ion-button>
           <ion-icon slot="start" *ngIf="item.persistent" [name]="item.icon"></ion-icon>
@@ -35,18 +38,27 @@
 
     </ion-row>
     <ion-row>
-      <ion-input type="text" autocapitalize="on" clearInput  placeholder="Something else?" [(ngModel)]="itemName"></ion-input>
-      <ion-button  (click)="addItem()">
+      <ion-input type="text" autocapitalize="on" clearInput placeholder="Something else?" [(ngModel)]="itemName">
+      </ion-input>
+      <ion-button (click)="addItem()">
         <ion-icon slot="start" name="add-circle"></ion-icon>
         Add
       </ion-button>
     </ion-row>
-  <ion-row>
-    
-    <ion-button expand="block"  color="light" style="width: 47%"><ion-icon slot="start" name="qr-scanner" ></ion-icon>Scan QR </ion-button>
-    
-    <ion-button expand="block"  color="light" style="width: 47%"><ion-icon slot="start" name="logo-rss"></ion-icon>Use NFC</ion-button>
-  </ion-row>
+    <ion-row>
+      <ion-label>
+        <h1>Transfer using</h1>
+      </ion-label>
+    </ion-row>
+    <ion-row>
+      <ion-button expand="block" color="light" style="width: 47%" (click)="donate()">
+        <ion-icon slot="start" name="qr-scanner"></ion-icon>Scan QR
+      </ion-button>
+
+      <ion-button expand="block" color="light" style="width: 47%" (click)="donate()">
+        <ion-icon slot="start" name="logo-rss"></ion-icon>Use NFC
+      </ion-button>
+    </ion-row>
   </ion-grid>
 
 

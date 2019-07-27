@@ -9,8 +9,9 @@ import { Campaign } from '../campaign';
 })
 export class DonatePage implements OnInit {
   campaign: Campaign;
+  waiting: boolean = false;
   donations: any[]
-  itemName: string="";
+  itemName: string = "";
   constructor(private route: ActivatedRoute, private router: Router) {
     this.route.queryParams.subscribe(params => {
       if (this.router.getCurrentNavigation().extras.state) {
@@ -35,7 +36,7 @@ export class DonatePage implements OnInit {
   }
   addItem() {
     this.donations.push({ persistent: false, name: this.itemName + ":", icon: "", count: 0 });
-    this.itemName="";
+    this.itemName = "";
   }
 
   removeItem(item) {
@@ -44,5 +45,12 @@ export class DonatePage implements OnInit {
       this.donations.splice(index, 1);
     }
   }
-
+  donate() {
+    this.waiting = true;
+    let me = this;
+    setTimeout(() => {
+      me.waiting = false;
+      //TODO: next screen
+    }, 5000);
+  }
 }
