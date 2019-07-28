@@ -1,9 +1,71 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-title>confirmReception</ion-title>
-  </ion-toolbar>
-</ion-header>
-
-<ion-content>
-
-</ion-content>
+    <ion-toolbar>
+        <ion-buttons slot="start">
+          <ion-menu-button></ion-menu-button>
+        </ion-buttons>
+      <ion-title>Confirm Reception</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  
+  <ion-content>
+    <div #overlay class="overlay" *ngIf="waiting">
+      <ion-spinner #spinner class="spinner"></ion-spinner>
+    </div>
+    <div #overlay class="overlay" *ngIf="finished">
+      <ion-card #successMsg class="successMsg">
+        <ion-card-title>
+          Done!
+        </ion-card-title>
+        <ion-card-content>
+          <ion-icon name="checkmark-circle" color="success" slot="start" ></ion-icon>
+          <ion-label>We've registered the donation!</ion-label>
+        </ion-card-content>
+      </ion-card>
+    </div>
+    <ion-grid>
+      <ion-row>
+        <label>
+          <h1>You are Receiving:</h1>
+        </label>
+      </ion-row>
+      <ion-row>
+        <ion-list>
+          <ion-item *ngFor="let item of donations">
+            <ion-icon slot="start" *ngIf="item.persistent" [name]="item.icon"></ion-icon>
+            <ion-label>{{item.name + " " +item.count}}</ion-label>
+          </ion-item>
+        </ion-list>
+      </ion-row>
+      <ion-row>
+        <label>
+          <h1>From:</h1>
+        </label>
+      </ion-row>
+  
+      <ion-row>
+        <ion-card style="width: 100%;">
+          <ion-card-content style="width: 100%;">
+  
+            <ion-label class="username">
+              <h1>Tomas</h1>
+              <h2>Donor</h2>
+            </ion-label>
+            <ion-avatar slot="start" size="large">
+              <img src="/assets/img/users/giver.jpg">
+            </ion-avatar>
+  
+          </ion-card-content>
+        </ion-card>
+      </ion-row>
+      
+      <ion-row>
+        <ion-button expand="block" color="success" style="width: 47%" (click)="donate()">
+          <ion-icon slot="start" name="checkmark-circle-outline"></ion-icon>Confirm
+        </ion-button>
+  
+        <ion-button expand="block" color="danger" style="width: 47%" (click)="donate()">
+          <ion-icon slot="start" name="close-circle-outline"></ion-icon>Cancel
+        </ion-button>
+      </ion-row>
+    </ion-grid>
+  </ion-content>

@@ -7,9 +7,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ConfirmReceptionPage implements OnInit {
 
+  waiting = false;
+  finished = false;
   constructor() { }
 
   ngOnInit() {
   }
+  donate() {
+    let me=this;
+    me.waiting=true;
+    setTimeout(()=>{me.waiting=false; me.finished=true;},2000);
 
+  }
 }
