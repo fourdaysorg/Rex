@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NavController } from '@ionic/angular';
+import { GlobalService } from '../global.service';
 
 @Component({
   selector: 'app-receive-donation',
@@ -8,7 +9,7 @@ import { NavController } from '@ionic/angular';
 })
 export class ReceiveDonationPage implements OnInit {
   public waiting: boolean = false;
-  constructor(private navController: NavController) { }
+  constructor(private navController: NavController,public global:GlobalService) { }
 
   ngOnInit() {
     let me = this;
