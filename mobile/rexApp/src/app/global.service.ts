@@ -11,6 +11,11 @@ export class GlobalService {
     this.items = [
       { name: "Water Bottles", icon: "water" },
       { name: "Clothes", icon: "shirt" },
-      { name: "Food", icon: "nutrition" }];
+      { name: "Food", icon: "nutrition" },
+      { name: "Batteries", icon: "battery-full" },
+      { name: "Money", icon: "cash" },
+      { name: "Shelter", icon: "bed" },
+      { name: "Volunteering", icon: "time" },
+    ];
   }
 }
