@@ -10,7 +10,10 @@ export class ConfirmReceptionPage implements OnInit {
 
   waiting = false;
   finished = false;
-  constructor(public global:GlobalService) { }
+  donations=[];
+  constructor(public global:GlobalService) {
+    this.donations=global.donatedItems;
+   }
 
   ngOnInit() {
   }
