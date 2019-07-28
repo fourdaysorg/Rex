@@ -3,7 +3,9 @@
     <ion-buttons slot="start">
       <ion-menu-button></ion-menu-button>
     </ion-buttons>
-    <ion-icon slot="end" size="large" name="contact"></ion-icon>
+    <ion-avatar slot="end" size="small">
+      <img [src]="global.user.avatar">
+    </ion-avatar>
     <ion-back-button slot="start"></ion-back-button>
     <ion-title>{{campaign.Name}}</ion-title>
   </ion-toolbar>
