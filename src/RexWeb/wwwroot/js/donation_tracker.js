@@ -30,7 +30,7 @@ var OPACITY = {
   },
   TRANSITION_DURATION = 400,
   HEIGHT = 500 - MARGIN.TOP - MARGIN.BOTTOM,
-  WIDTH = 960 - MARGIN.LEFT - MARGIN.RIGHT,
+  WIDTH = 1500 - MARGIN.LEFT - MARGIN.RIGHT,
   LAYOUT_INTERATIONS = 32,
   REFRESH_INTERVAL = 7000;
 
@@ -386,8 +386,7 @@ function update () {
           .duration(TRANSITION_DURATION)
           .style("opacity", 1).select(".value")
           .text(function () {
-            var additionalInstructions = g.children.length ? "\n(Double click to expand)" : "";
-            return g.name + "\nNet flow: " + formatFlow(g.netFlow) + additionalInstructions;
+            return g.name + "\n" + g.tooltipText;
           });
     }
   });
@@ -625,6 +624,16 @@ function createData(ndonors, nlayers, min_height, max_height) {
             exampleNodes.push(e);
         });
     });
+
+    exampleNodes.forEach(node => {
+        let receivingLinks = exampleLinks.filter(l => l.target === node.id);
+        let sendingLinks = exampleLinks.filter(l => l.source === node.id);
+        let received = receivingLinks.length * 30;
+        let sent = sendingLinks.length * 30;
+        node.tooltipText = "\n" + "Donations received: " + received +
+            "\n" + "Donations sent: " + Math.min(received, sent) +
+            "\n" + "(Double-click for details)";
+    })
 
     currentData = JSON.stringify({
         nodes: exampleNodes,
