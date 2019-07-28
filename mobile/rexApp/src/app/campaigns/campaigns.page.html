@@ -3,13 +3,14 @@
     <ion-buttons slot="start">
       <ion-menu-button></ion-menu-button>
     </ion-buttons>
-    <ion-icon slot="end" size="large" name="contact"></ion-icon>
+    <ion-avatar slot="end" size="small">
+      <img [src]="global.user.avatar">
     <ion-title>Campaigns</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-  <ion-card *ngFor ="let campaign of campaigns" (click)="navigateTo(campaign)">
+  <ion-card *ngFor="let campaign of campaigns" (click)="navigateTo(campaign)">
     <ion-card-header>
       <ion-card-subtitle>{{campaign.Country}}</ion-card-subtitle>
       <ion-card-title>{{campaign.Name}}</ion-card-title>

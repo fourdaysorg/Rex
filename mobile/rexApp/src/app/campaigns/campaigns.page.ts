@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Campaign } from '../campaign';
 import { NavController } from '@ionic/angular';
 import { NavigationExtras } from '@angular/router';
+import { GlobalService } from '../global.service';
 
 @Component({
   selector: 'app-campaigns',
@@ -10,7 +11,7 @@ import { NavigationExtras } from '@angular/router';
 })
 export class CampaignsPage implements OnInit {
 
-  constructor(private navController: NavController) { }
+  constructor(private navController: NavController,public global:GlobalService) { }
   public campaigns: Campaign[];
   ngOnInit() {
     this.campaigns = new Array<Campaign>();
