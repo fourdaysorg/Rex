@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { GlobalService } from '../global.service';
 
 @Component({
   selector: 'app-confirm-reception',
@@ -9,7 +10,7 @@ export class ConfirmReceptionPage implements OnInit {
 
   waiting = false;
   finished = false;
-  constructor() { }
+  constructor(public global:GlobalService) { }
 
   ngOnInit() {
   }
