@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute, NavigationExtras } from '@angular/router';
 import { Campaign } from '../campaign';
 import { NavController } from '@ionic/angular';
+import { GlobalService } from '../global.service';
 
 @Component({
   selector: 'app-donate',
@@ -13,7 +14,7 @@ export class DonatePage implements OnInit {
   waiting: boolean = false;
   donations: any[]
   itemName: string = "";
-  constructor(private route: ActivatedRoute, private router: Router,private navController: NavController) {
+  constructor(private route: ActivatedRoute, private router: Router,private navController: NavController,public global:GlobalService) {
     this.route.queryParams.subscribe(params => {
       if (this.router.getCurrentNavigation().extras.state) {
         this.campaign = this.router.getCurrentNavigation().extras.state.campaign;
