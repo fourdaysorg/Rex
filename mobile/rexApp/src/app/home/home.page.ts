@@ -15,6 +15,16 @@ export class HomePage {
     this.createRandomDonation();
     this.createRandomDonation();
     this.createRandomDonation();
+    this.step();
+  }
+
+  private step() {
+    let me=this;
+    let func = ()=>{
+      me.createRandomDonation();
+      setTimeout(func,500+Math.random()*2000);
+    };
+    func();
   }
   private createRandomDonation() {
     let item = this.getRandomItemFrom(this.global.items);
@@ -25,9 +35,9 @@ export class HomePage {
       description: item.name,
       amount: Math.floor(Math.random() * 40)
     });
-    while(this.recentDonations.length>5)
+    while(this.recentDonations.length>4)
     {
-      this.recentDonations.pop();
+      this.recentDonations.shift();
     }
   }
   private getRandomItemFrom(anArray: any[]): any {
