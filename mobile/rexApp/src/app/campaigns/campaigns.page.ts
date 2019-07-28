@@ -22,10 +22,7 @@ export class CampaignsPage implements OnInit {
         "/assets/img/kat/img1.jpg",
         "Destroyed home on New Orleans",
         "The storm originated over the Bahamas on August 23, 2005, from the merger of a tropical wave and the remnants of Tropical Depression Ten. Early on the following day, the tropical depression then intensified into a tropical storm as it headed generally westward toward Florida, strengthening into a hurricane only two hours before making landfall at Hallandale Beach and Aventura on August 25",
-        [{ name: "Water Bottles", icon: "water" },
-        { name: "Clothes", icon: "shirt" },
-        { name: "Food", icon: "nutrition" }
-        ],
+        this.global.items.slice(0,3),
         []
       ));
 
