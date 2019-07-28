@@ -6,8 +6,9 @@ import { Injectable } from '@angular/core';
 export class GlobalService {
   public user: any;
   public items: any[];
+  public donatedItems: any[]=[];
   constructor() {
-    this.user = { avatar: "/assets/img/users/giver.jpg", isOng: true };
+    this.user = { avatar: "/assets/img/users/receiver.jpg", isOng: true };
     this.items = [
       { name: "Water Bottles", icon: "water" },
       { name: "Clothes", icon: "shirt" },
@@ -17,5 +18,11 @@ export class GlobalService {
       { name: "Shelter", icon: "bed" },
       { name: "Volunteering", icon: "time" },
     ];
+    this.donatedItems.push(
+       { persistent: true, name: this.items[0].name + ":", icon: this.items[0].icon, count: 5 });
+       
+    this.donatedItems.push(
+      { persistent: true, name: this.items[1].name + ":", icon: this.items[1].icon, count: 2 });
+      
   }
 }
