@@ -15,6 +15,7 @@ export class ConfirmDonationPage implements OnInit {
     this.route.queryParams.subscribe(params => {
       if (this.router.getCurrentNavigation().extras.state) {
         this.donations = this.router.getCurrentNavigation().extras.state.donations;
+        console.log(this.donations);
       }
     });
   }

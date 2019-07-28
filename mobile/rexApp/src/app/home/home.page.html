@@ -3,10 +3,12 @@
     <ion-buttons slot="start">
       <ion-menu-button></ion-menu-button>
     </ion-buttons>
-    <ion-icon slot="end" size="large" name="contact"></ion-icon>
     <ion-title>
       Home
     </ion-title>
+    <ion-avatar slot="end" size="small">
+      <img [src]="global.user.avatar">
+    </ion-avatar>
   </ion-toolbar>
 </ion-header>
 
