@@ -1,10 +1,27 @@
 <ion-header>
   <ion-toolbar>
+      <ion-buttons slot="start">
+        <ion-menu-button></ion-menu-button>
+      </ion-buttons>
     <ion-title>Confirm Donation</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
+  <div #overlay class="overlay" *ngIf="waiting">
+    <ion-spinner #spinner class="spinner"></ion-spinner>
+  </div>
+  <div #overlay class="overlay" *ngIf="finished">
+    <ion-card #successMsg class="successMsg">
+      <ion-card-title>
+        Done!
+      </ion-card-title>
+      <ion-card-content>
+        <ion-icon name="checkmark-circle" color="success" slot="start" ></ion-icon>
+        <ion-label>We've registered your donation!</ion-label>
+      </ion-card-content>
+    </ion-card>
+  </div>
   <ion-grid>
     <ion-row>
       <label>
@@ -39,6 +56,16 @@
 
         </ion-card-content>
       </ion-card>
+    </ion-row>
+    
+    <ion-row>
+      <ion-button expand="block" color="success" style="width: 47%" (click)="donate()">
+        <ion-icon slot="start" name="checkmark-circle-outline"></ion-icon>Confirm
+      </ion-button>
+
+      <ion-button expand="block" color="danger" style="width: 47%" (click)="donate()">
+        <ion-icon slot="start" name="close-circle-outline"></ion-icon>Cancel
+      </ion-button>
     </ion-row>
   </ion-grid>
 </ion-content>
