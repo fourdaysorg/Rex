@@ -12,7 +12,7 @@ Instead of using those guarantees to track digital money among anonymous users w
 
 ## Organization
 This repository is organized as follows
-* The folder [BlockchainTest](/BlockchainTest) contains our first approach to make use of IBM's blockchain platform as a data storage.
+* The folder [src/BlockchainTest](/src/BlockchainTest) contains our first approach to make use of IBM's blockchain platform as a data storage.
 * The folder [mobile/rexApp](/mobile/rexApp) contains an [Ionic](https://ionicframework.com/) hybrid app that showcases the interactions that take place during the donation process.
 * the folder [src/RexWeb](/src/RexWeb) contains a [net Core](https://dotnet.microsoft.com/) web application that showcases how data can be publicly accessed and analyzed.
 * The file [IBMServices.md](IBMServices.md) contains the information regarding what services provided by IBM we require to provide the intended solution.
