@@ -1,13 +1,13 @@
 # Rex
-###(working title)
+### (working title)
 
-##Introduction
-###Origin
+## Introduction
+### Origin
 This project originated during a Bootcamp at IBM, Argentina in the context of the Call for Code initiative. 
 We won the [first prize](https://link) after two days of hard work, a presentation in front of the jury, and a really tough competition.
-###Idea
+### Idea
 
-##Organization
+## Organization
 This repository is organized as follows
 * The folder [BlockchainTest](/BlockchainTest) contains our first approach to make use of IBM's blockchain platform as a data storage.
 * The folder [mobile/rexApp](/mobile/rexApp) contains an [Ionic](https://ionicframework.com/) hybrid app that showcases the interactions that take place during the donation process.
