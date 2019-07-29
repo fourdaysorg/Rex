@@ -3,7 +3,7 @@
 
 ## Introduction
 ### Origin
-This project originated during a Bootcamp at IBM, Argentina in the context of the Call for Code initiative. 
+This project originated during a Bootcamp at IBM, Argentina, in the context of the Call for Code initiative. 
 We won the [first prize](https://twitter.com/IBMArgentina/status/1154150754816602117) after two days of hard work, a presentation in front of the jury, and a really tough competition.
 ### Idea
 When hearing about Blockchain most people can only think about cryptocurrencies, but what Blockchain provides is a way to define what has to happen in order to consider a statement as true, and guarantees that once that process completes the history cannot be erased. 
@@ -14,7 +14,7 @@ Instead of using those guarantees to track digital money among anonymous users w
 This repository is organized as follows
 * The folder [src/BlockchainTest](/src/BlockchainTest) contains our first approach to make use of IBM's blockchain platform as a data storage.
 * The folder [src/RexApp](/src/RexApp) contains an [Ionic](https://ionicframework.com/) hybrid app that showcases the interactions that take place during the donation process.
-* the folder [src/RexWeb](/src/RexWeb) contains a [net Core](https://dotnet.microsoft.com/) web application that showcases how data can be publicly accessed and analyzed.
+* The folder [src/RexWeb](/src/RexWeb) contains a [net Core](https://dotnet.microsoft.com/) web application that showcases how data can be publicly accessed and analyzed.
 * The file [IBMServices.md](IBMServices.md) contains the information regarding what services provided by IBM we require to provide the intended solution.
 * The file [LICENSE](LICNSE) contains the information regardin the licence that applies to everything contained on this repo.
 * The file [README.md](README.md) is this file.
