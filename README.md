@@ -6,6 +6,9 @@
 This project originated during a Bootcamp at IBM, Argentina in the context of the Call for Code initiative. 
 We won the [first prize](https://link) after two days of hard work, a presentation in front of the jury, and a really tough competition.
 ### Idea
+When hearing about Blockchain most people can only think about cryptocurrencies, but what Blockchain provides is a way to define what has to happen in order to consider a statement as true, and guarantees that once that process completes the history cannot be erased. 
+
+Instead of using those guarantees to track digital money among anonymous users we plan to use it as means to have a publicly accessible history of everything that gets donated into ONGs and dissaster relief agencies, and what happened with those donations, enabling not only the different governments and the UN to audit those entities, but also every person with an internet connection. If yo want to know what happened with the stuff you gave to aid in a dissaster you'll have it a few clicks away.
 
 ## Organization
 This repository is organized as follows
