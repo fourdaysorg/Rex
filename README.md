@@ -10,6 +10,10 @@ When hearing about Blockchain most people can only think about cryptocurrencies,
 
 Instead of using those guarantees to track digital money among anonymous users we plan to use it as means to have a publicly accessible history of everything that gets donated into ONGs and dissaster relief agencies, and what happened with those donations, enabling not only the different governments and the UN to audit those entities, but also every person with an internet connection. If yo want to know what happened with the stuff you gave to aid in a dissaster you'll have it a few clicks away.
 
+## Video Presentation
+One of the requirements of the Call for Code Submission is a short video explaining the idea.
+You can find that video following following this [link to youtube](https://www.youtube.com/watch?v=CF4c7Bp5jwE)
+
 ## Organization
 This repository is organized as follows
 * The folder [src/BlockchainTest](/src/BlockchainTest) contains our first approach to make use of IBM's blockchain platform as a data storage.
