@@ -4,7 +4,7 @@
 ## Introduction
 ### Origin
 This project originated during a Bootcamp at IBM, Argentina in the context of the Call for Code initiative. 
-We won the [first prize](https://link) after two days of hard work, a presentation in front of the jury, and a really tough competition.
+We won the [first prize](https://twitter.com/IBMArgentina/status/1154150754816602117) after two days of hard work, a presentation in front of the jury, and a really tough competition.
 ### Idea
 When hearing about Blockchain most people can only think about cryptocurrencies, but what Blockchain provides is a way to define what has to happen in order to consider a statement as true, and guarantees that once that process completes the history cannot be erased. 
 
