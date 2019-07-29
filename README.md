@@ -22,3 +22,4 @@ This repository is organized as follows
 * The file [maturityofthesubmission.md](maturityofthesubmission.md) explains the current state of the project according to IBM's Call for Code requirements.
 * The file [shortdescription.md](shortdescription.md) contains a brief explanation of the idea according to IBM's Call for Code requirements.
 * The file [team.md](team.md) contains an ennumeration of the team members that contributed to the project according to IBM's Call for Code requirements.
+* Link to the video in Youtube: https://youtu.be/CF4c7Bp5jwE
