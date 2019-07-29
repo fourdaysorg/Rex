@@ -16,7 +16,7 @@ This repository is organized as follows
 * The folder [src/RexApp](/src/RexApp) contains an [Ionic](https://ionicframework.com/) hybrid app that showcases the interactions that take place during the donation process.
 * the folder [src/RexWeb](/src/RexWeb) contains a [net Core](https://dotnet.microsoft.com/) web application that showcases how data can be publicly accessed and analyzed.
 * The file [IBMServices.md](IBMServices.md) contains the information regarding what services provided by IBM we require to provide the intended solution.
-* The file [LICENSE](LICNSE) contains the information regardin the licence that applies to everything contained on this repo.
+* The file [LICENSE](LICNSE) contains the information regarding the licence that applies to everything contained on this repo.
 * The file [README.md](README.md) is this file.
 * The file [longdescription.md](longdescription.md) contains a description of the project according to IBM's Call for Code requirements.
 * The file [maturityofthesubmission.md](maturityofthesubmission.md) explains the current state of the project according to IBM's Call for Code requirements.
