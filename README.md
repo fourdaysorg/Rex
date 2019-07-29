@@ -8,7 +8,7 @@ We won the [first prize](https://twitter.com/IBMArgentina/status/115415075481660
 ### Idea
 When hearing about Blockchain most people can only think about cryptocurrencies, but what Blockchain provides is a way to define what has to happen in order to consider a statement as true, and guarantees that once that process completes the history cannot be erased. 
 
-Instead of using those guarantees to track digital money among anonymous users we plan to use it as means to have a publicly accessible history of everything that gets donated into ONGs and dissaster relief agencies, and what happened with those donations, enabling not only the different governments and the UN to audit those entities, but also every person with an internet connection. If yo want to know what happened with the stuff you gave to aid in a dissaster you'll have it a few clicks away.
+Instead of using those guarantees to track digital money among anonymous users we plan to use it as means to have a publicly accessible history of everything that gets donated into ONGs and dissaster relief agencies, and what happened with those donations, enabling not only the different governments and the UN to audit those entities, but also every person with an internet connection. If you want to know what happened with the stuff you gave to aid in a dissaster you'll have it a few clicks away.
 
 ## Video Presentation
 One of the requirements of the Call for Code Submission is a short video explaining the idea.
@@ -26,3 +26,4 @@ This repository is organized as follows
 * The file [maturityofthesubmission.md](maturityofthesubmission.md) explains the current state of the project according to IBM's Call for Code requirements.
 * The file [shortdescription.md](shortdescription.md) contains a brief explanation of the idea according to IBM's Call for Code requirements.
 * The file [team.md](team.md) contains an ennumeration of the team members that contributed to the project according to IBM's Call for Code requirements.
+* Link to the video in Youtube: https://youtu.be/CF4c7Bp5jwE
