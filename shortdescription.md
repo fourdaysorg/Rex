@@ -1,2 +1,2 @@
 # Short Description
-It ensures the transparency of the movement of donations
+Transparency in the movement of donations using Blockchain
